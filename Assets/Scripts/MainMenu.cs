@@ -5,7 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string mainScene;
+    [SerializeField]
+    private string mainScene;
+    [SerializeField]
+    private string menuScene;
+
+    [SerializeField]
+    private GameObject options;
+
+    [SerializeField]
+    private GameObject main;
 
     public void Play()
     {
@@ -15,5 +24,22 @@ public class MainMenu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Options()
+    {
+        main.SetActive(false);
+        options.SetActive(true);
+    }
+
+    public void Back()
+    {
+        options.SetActive(false);
+        main.SetActive(true);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(menuScene);
     }
 }

@@ -11,6 +11,8 @@ TagManager:
   - BlueAttack
   - RedAttack
   - Corpse
+  - Ground
+  - Obstacle
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class NecrovorePlayer : MonoBehaviour
 
     [SerializeField]
     private float _maxHunger;
+    private float _baseMaxHunger;
     private float _hunger;
     [SerializeField]
     private float _hungerDrainRate;
@@ -43,6 +44,9 @@ public class NecrovorePlayer : MonoBehaviour
     private float _cameraShakeEatingDuration;
     private float _currentCamShakeEatingTime = 0f;
 
+    [SerializeField]
+    private float _hungerLostOnHit;
+
     private Vector3 _velocity;
 
     private List<Corpse> _corpses;
@@ -58,11 +62,13 @@ public class NecrovorePlayer : MonoBehaviour
         _corpses = new List<Corpse>();
 
         _hunger = _maxHunger;
+        _baseMaxHunger = _maxHunger;
     }
 
     void Update()
     {
         this.transform.position += _velocity * Time.deltaTime;
+        //this.transform.Translate(_velocity * Time.deltaTime);
 
         _camera.SetTargetPosition(this.transform.position + _velocity.normalized * 2f + new Vector3(0, 10, 0));
 
@@ -87,7 +93,9 @@ public class NecrovorePlayer : MonoBehaviour
                 _eatenHunger = 0f;
                 GameManager.Instance.SliderShake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude * 4f);
 
-                BloodParticleSystemHandler.Instance.SpawnBlood(this.transform.position, new Vector3(1, 0, 0));
+                Vector3 bloodDirection = (_eatenCorpse.transform.position - this.transform.position);
+                bloodDirection.y = 0;
+                BloodParticleSystemHandler.Instance.SpawnBlood(this.transform.position, bloodDirection.normalized);
             }
             _currentCamShakeEatingTime -= Time.deltaTime;
         }
@@ -104,7 +112,8 @@ public class NecrovorePlayer : MonoBehaviour
         {
             GameManager.Instance.StartCoroutine(_camera.Shake(0.3f, 0.4f));
             GameManager.Instance.PrintScores();
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            GameManager.Instance.gameObject.GetComponent<Defeat>().GameOver();
         }
         else GameManager.Instance.UpdateScore(Time.deltaTime, dmg, fullBelly);
     }
@@ -206,6 +215,10 @@ public class NecrovorePlayer : MonoBehaviour
                 StartEating(corpse);
             }
         }
+        else if (other.CompareTag("BlueAttack") || other.CompareTag("RedAttack"))
+        {
+            GetHit();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -214,5 +227,13 @@ public class NecrovorePlayer : MonoBehaviour
         {
             _corpses.Remove(other.GetComponent<Corpse>());
         }
+    }
+
+    public void GetHit()
+    {
+        _maxHunger -= _hungerLostOnHit;
+        _hunger = Mathf.Min(_maxHunger, _hunger);
+        GameManager.Instance.ShortenSlider(_maxHunger / _baseMaxHunger, _hunger / _maxHunger);
+        print("oof");
     }
 }

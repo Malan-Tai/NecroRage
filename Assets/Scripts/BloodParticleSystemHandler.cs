@@ -52,7 +52,8 @@ public class BloodParticleSystemHandler : MonoBehaviour
             //singleList.Add(new Single(position, UtilsClass.ApplyRotationToVector(direction, Random.Range(-15f, 15f)), meshParticleSystem)); 
 
             // my code
-            singleList.Add(new Single(position, direction, meshParticleSystem));
+            Vector3 particlePos = new Vector3(position.x, position.z, position.y);
+            singleList.Add(new Single(particlePos, Quaternion.Euler(0f, 0f, Random.Range(-15f, 15f)) * direction, meshParticleSystem));
         }
     }
 
@@ -78,7 +79,7 @@ public class BloodParticleSystemHandler : MonoBehaviour
             this.direction = direction;
             this.meshParticleSystem = meshParticleSystem;
 
-            quadSize = new Vector3(.25f, .25f);
+            quadSize = new Vector3(0.25f, 0.5f);
             rotation = Random.Range(0, 360f);
             moveSpeed = Random.Range(25f, 35f);
             uvIndex = 0; // Random.Range(0, 8);
@@ -90,6 +91,8 @@ public class BloodParticleSystemHandler : MonoBehaviour
         {
             position += direction * moveSpeed * Time.deltaTime;
             rotation += 360f * (moveSpeed / 10f) * Time.deltaTime;
+
+            position.z = 0;
 
             meshParticleSystem.UpdateQuad(quadIndex, position, rotation, quadSize, false, uvIndex);
 
