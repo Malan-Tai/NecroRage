@@ -31,8 +31,8 @@ public class CustomCamera : MonoBehaviour
 
     private void Update()
     {
-        this.transform.position += (_targetPosition - this.transform.position) * _moveSpeed;
-        _camera.orthographicSize += (_targetZoom - _camera.orthographicSize) * _zoomSpeed;
+        this.transform.position += (_targetPosition - this.transform.position) * _moveSpeed * Time.deltaTime;
+        _camera.orthographicSize += (_targetZoom - _camera.orthographicSize) * _zoomSpeed * Time.deltaTime;
     }
 
     public void SetTargetPosition(Vector3 position)
