@@ -21,7 +21,7 @@ public class CustomCamera : MonoBehaviour
 
     private void Start()
     {
-        _camera = GetComponent<Camera>();
+        _camera = GetComponentInChildren<Camera>();
         _targetZoom = _camera.orthographicSize;
         _targetPosition = this.transform.position;
 
@@ -48,5 +48,25 @@ public class CustomCamera : MonoBehaviour
     public void ZoomOut()
     {
         _targetZoom = _zoomOutSize;
+    }
+
+    public IEnumerator Shake(float duration, float magnitude)
+    {
+        Vector3 originalPos = _camera.transform.localPosition;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            _camera.transform.localPosition = originalPos + new Vector3(x, y, 0);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        _camera.transform.localPosition = originalPos;
     }
 }

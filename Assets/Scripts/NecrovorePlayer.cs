@@ -30,13 +30,21 @@ public class NecrovorePlayer : MonoBehaviour
     [SerializeField]
     private float _dashHungerDrain;
 
+    [SerializeField]
+    private float _cameraShakeEatingInterval;
+    [SerializeField]
+    private float _cameraShakeEatingMagnitude;
+    [SerializeField]
+    private float _cameraShakeEatingDuration;
+    private float _currentCamShakeEatingTime = 0f;
+
     private Vector3 _velocity;
 
     private List<Corpse> _corpses;
 
     private void Start()
     {
-        _camera = Camera.main.GetComponent<CustomCamera>();
+        _camera = Camera.main.GetComponentInParent<CustomCamera>();
 
         _corpses = new List<Corpse>();
 
@@ -61,6 +69,13 @@ public class NecrovorePlayer : MonoBehaviour
         {
             dmg = _eatenCorpse.TakeDamage(_eatingDamage * Time.deltaTime);
             _hunger += dmg;
+
+            if (_currentCamShakeEatingTime <= 0f)
+            {
+                StartCoroutine(_camera.Shake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude));
+                _currentCamShakeEatingTime = _cameraShakeEatingInterval;
+            }
+            _currentCamShakeEatingTime -= Time.deltaTime;
         }
         float fullBelly = _hunger - _maxHunger;
         _hunger = Mathf.Min(_maxHunger, _hunger);
@@ -69,6 +84,7 @@ public class NecrovorePlayer : MonoBehaviour
 
         if (_hunger <= 0)
         {
+            GameManager.Instance.StartCoroutine(_camera.Shake(0.3f, 0.4f));
             GameManager.Instance.PrintScores();
             this.gameObject.SetActive(false);
         }
@@ -114,7 +130,8 @@ public class NecrovorePlayer : MonoBehaviour
 
         _eatenCorpse = _corpses[0];
         _eatenCorpse.StartJoint(GetComponent<Rigidbody>());
-        //_corpses[0].transform.SetParent(this.transform, true);
+
+        _currentCamShakeEatingTime = 0f;
 
         _eatenCorpse.OnDeath += FinishEating;
 
@@ -134,7 +151,6 @@ public class NecrovorePlayer : MonoBehaviour
         if (_eatenCorpse == null) return;
 
         _eatenCorpse.OnDeath -= FinishEating;
-        //_eatenCorpse.transform.SetParent(null, true);
         _eatenCorpse.StopJoint();
         _eatenCorpse = null;
 
