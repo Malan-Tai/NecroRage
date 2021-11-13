@@ -86,6 +86,8 @@ public class NecrovorePlayer : MonoBehaviour
                 _hunger += _eatenHunger;
                 _eatenHunger = 0f;
                 GameManager.Instance.SliderShake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude * 4f);
+
+                BloodParticleSystemHandler.Instance.SpawnBlood(this.transform.position, new Vector3(1, 0, 0));
             }
             _currentCamShakeEatingTime -= Time.deltaTime;
         }
