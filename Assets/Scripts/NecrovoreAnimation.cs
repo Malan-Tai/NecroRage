@@ -16,5 +16,7 @@ public class NecrovoreAnimation : MonoBehaviour
     private void Update()
     {
         GetComponent<Animator>().SetBool("Walking", player.Walking);
+        GetComponent<Animator>().SetBool("Dashing", player.Dashing);
+        GetComponent<Animator>().SetBool("Eating", player.Eating);
     }
 }
