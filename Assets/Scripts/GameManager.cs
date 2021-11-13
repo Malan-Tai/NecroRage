@@ -88,5 +88,7 @@ public class GameManager : MonoBehaviour
     {
         RectTransform rect = _hungerSlider.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(newMaxRatio * _hungerSliderBaseWidth, rect.sizeDelta.y);
+        //rect.position = new Vector3((rect.sizeDelta.x - _hungerSliderBaseWidth) / 2f, 0, 0);
+        rect.anchoredPosition3D = new Vector3((rect.sizeDelta.x - _hungerSliderBaseWidth) / 2f, 0, 0);
     }
 }
