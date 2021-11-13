@@ -46,6 +46,31 @@ MonoBehaviour:
     eatenCorpse: {fileID: 0}
   description: 
   drawGizmos: 0
+--- !u!114 &-7353986265765116394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509c2a96b51063849a3439e0b7c61450, type: 3}
+  m_Name: AnimatorSetBool
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 3e390a116d8c22d44bd6fdee1b97558b
+  position: {x: -481.67502, y: 899.00006}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  boolName: Walking
+  boolValue: 1
 --- !u!114 &-7169658908151667583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +86,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: bcf63b8d0d8ce57478d9f512e5b9a2c5
-  position: {x: -794.1301, y: 892.2925}
+  position: {x: -833.675, y: 892}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -84,7 +109,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 4e20fbcfcd5b1044c99a572cb018e235
-  position: {x: 953.70416, y: 638.03394}
+  position: {x: 1488, y: 615}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -95,6 +120,31 @@ MonoBehaviour:
   minDuration: 0
   maxDuration: 0.1
   duration: 0
+--- !u!114 &-6375344283406254308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509c2a96b51063849a3439e0b7c61450, type: 3}
+  m_Name: AnimatorSetBool
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 9be257feb5f6ebb4cbb96a07e1b400e3
+  position: {x: 1002, y: 615}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  boolName: Walking
+  boolValue: 1
 --- !u!114 &-5446996667329616066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +160,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e78df1f87c8011c4599ad5cfaf88757e
-  position: {x: 194.3875, y: 614.2901}
+  position: {x: 330.2175, y: 611.355}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -176,7 +226,9 @@ MonoBehaviour:
   children:
   - {fileID: 3725665388589340063}
   - {fileID: -9157077211963618492}
+  - {fileID: 8737649473498104296}
   - {fileID: -5446996667329616066}
+  - {fileID: 6165381123293096581}
 --- !u!114 &-1853762312744767365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +244,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d6cb2de60f7fc6e4b889abcefc9807c5
-  position: {x: 741.70416, y: 647.03394}
+  position: {x: 1172, y: 616}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -246,7 +298,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6d3316cba6180ca4eb0438a94d991339
-  position: {x: -630.7027, y: 611.355}
+  position: {x: -584.67505, y: 610}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -285,7 +337,6 @@ MonoBehaviour:
   - {fileID: -9157077211963618492}
   - {fileID: 2788158124671669802}
   - {fileID: -8539897215835980313}
-  - {fileID: 7893020815753448712}
   - {fileID: 3046437121232321551}
   - {fileID: 6302109818602238034}
   - {fileID: 3518846152877005797}
@@ -298,8 +349,17 @@ MonoBehaviour:
   - {fileID: 2853370385734888076}
   - {fileID: 7021647217464761981}
   - {fileID: -7169658908151667583}
+  - {fileID: 9192405600519619632}
+  - {fileID: 2415811017032993701}
+  - {fileID: 3304450359465669747}
+  - {fileID: -7353986265765116394}
+  - {fileID: 5988478714766518657}
+  - {fileID: 8737649473498104296}
+  - {fileID: 6165381123293096581}
+  - {fileID: -6375344283406254308}
+  - {fileID: 8489990568921226883}
   blackboard:
-    moveToPosition: {x: -45.11483, y: 0, z: 59.202065}
+    moveToPosition: {x: 98.62693, y: 0, z: 103.57157}
     closestEntity: {fileID: 0}
     isAttacking: 0
     eatenCorpse: {fileID: 0}
@@ -318,7 +378,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e299508f46d8ebd459416b8843c30e3a
-  position: {x: -624.1301, y: 899.2925}
+  position: {x: -663.67505, y: 899.00006}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -330,6 +390,31 @@ MonoBehaviour:
   maxDistance: 10
   max: {x: 10, y: 10}
   centerProximity: 40
+--- !u!114 &2415811017032993701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509c2a96b51063849a3439e0b7c61450, type: 3}
+  m_Name: AnimatorSetBool
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 2fa1806ff3069394c94625e7220eb8bc
+  position: {x: -1362.9, y: 932.7501}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  boolName: Walking
+  boolValue: 1
 --- !u!114 &2788158124671669802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,7 +484,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: bd765a69afb4caf40ba99762ff5c8b9a
-  position: {x: -1203, y: 938.0612}
+  position: {x: -1205.6453, y: 934.0326}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -408,10 +493,35 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   speed: 8
-  stoppingDistance: 0.5
+  stoppingDistance: 1
   updateRotation: 1
   acceleration: 40
-  tolerance: 0.7
+  tolerance: 1.2
+--- !u!114 &3304450359465669747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509c2a96b51063849a3439e0b7c61450, type: 3}
+  m_Name: AnimatorSetBool
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 9f42dbd194870a246b947aa46f6ce1e6
+  position: {x: -1052.55, y: 933.40015}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  boolName: Walking
+  boolValue: 0
 --- !u!114 &3518846152877005797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +545,7 @@ MonoBehaviour:
     eatenCorpse: {fileID: 0}
   description: 
   drawGizmos: 0
-  range: 0.8
+  range: 2
 --- !u!114 &3651486719369585513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,8 +570,10 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   children:
-  - {fileID: 7893020815753448712}
+  - {fileID: 9192405600519619632}
+  - {fileID: 2415811017032993701}
   - {fileID: 3046437121232321551}
+  - {fileID: 3304450359465669747}
 --- !u!114 &3725665388589340063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +597,56 @@ MonoBehaviour:
     eatenCorpse: {fileID: 0}
   description: 
   drawGizmos: 0
+--- !u!114 &5988478714766518657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509c2a96b51063849a3439e0b7c61450, type: 3}
+  m_Name: AnimatorSetBool
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 27f800fa3226b884981bb0313e411539
+  position: {x: -130.675, y: 897}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  boolName: Walking
+  boolValue: 0
+--- !u!114 &6165381123293096581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509c2a96b51063849a3439e0b7c61450, type: 3}
+  m_Name: AnimatorSetBool
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: df06fa2c4559b6a45a2d04d293a8e4de
+  position: {x: 497, y: 609}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  boolName: Walking
+  boolValue: 0
 --- !u!114 &6302109818602238034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,7 +688,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: f54ff5735a1ce6c4a8954eeef456ab37
-  position: {x: -630.7027, y: 736.355}
+  position: {x: -585.675, y: 749}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -537,7 +699,9 @@ MonoBehaviour:
   children:
   - {fileID: -7169658908151667583}
   - {fileID: 1828670741716506289}
+  - {fileID: -7353986265765116394}
   - {fileID: 8605599283312413027}
+  - {fileID: 5988478714766518657}
 --- !u!114 &6875831859346251342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,7 +787,7 @@ MonoBehaviour:
   state: 0
   started: 1
   guid: 82dc2f1e6cc6d0d4bb7ee368bf25c81e
-  position: {x: 742.70416, y: 442.03394}
+  position: {x: 1115.7601, y: 416.0325}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -633,9 +797,11 @@ MonoBehaviour:
   drawGizmos: 0
   children:
   - {fileID: 9019164668587285198}
+  - {fileID: -6375344283406254308}
   - {fileID: -1853762312744767365}
+  - {fileID: 8489990568921226883}
   - {fileID: -6647753084687041405}
---- !u!114 &7893020815753448712
+--- !u!114 &8489990568921226883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -644,13 +810,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc85298e1d85dfb47889fd470bf1b05a, type: 3}
-  m_Name: NearestEntityPosition
+  m_Script: {fileID: 11500000, guid: 509c2a96b51063849a3439e0b7c61450, type: 3}
+  m_Name: AnimatorSetBool
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: d4f94bbe36cf5a344883532989578f14
-  position: {x: -1383.0002, y: 936.45264}
+  guid: f9980faeb9753a74bbdc5236f4eeb398
+  position: {x: 1327, y: 617}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -658,6 +824,8 @@ MonoBehaviour:
     eatenCorpse: {fileID: 0}
   description: 
   drawGizmos: 0
+  boolName: Walking
+  boolValue: 0
 --- !u!114 &8605599283312413027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,7 +841,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d2f49b68dc537c6478bf9639a7902e67
-  position: {x: -468.1302, y: 898.2926}
+  position: {x: -307.67496, y: 897}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -686,6 +854,31 @@ MonoBehaviour:
   stoppingDistance: 0.5
   acceleration: 40
   tolerance: 1
+--- !u!114 &8737649473498104296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509c2a96b51063849a3439e0b7c61450, type: 3}
+  m_Name: AnimatorSetBool
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 22adfa5f8b99d0643a70824bc7a1c0c6
+  position: {x: 165.7775, y: 612.5175}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  boolName: Walking
+  boolValue: 1
 --- !u!114 &9019164668587285198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,7 +894,7 @@ MonoBehaviour:
   state: 0
   started: 1
   guid: 69dbf1985d9ce1b41b3c295f12b7514e
-  position: {x: 545.7041, y: 648.034}
+  position: {x: 829, y: 615}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -713,3 +906,26 @@ MonoBehaviour:
   maxDistance: 20
   max: {x: 10, y: 10}
   centerProximity: 40
+--- !u!114 &9192405600519619632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd28136cee879d45beb4cff91d9a164, type: 3}
+  m_Name: CorpsePosition
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 561dc04e9fa35f749a4b254565f52971
+  position: {x: -1516.85, y: 931.3001}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
