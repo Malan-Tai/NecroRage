@@ -68,6 +68,7 @@ public class NecrovorePlayer : MonoBehaviour
     void Update()
     {
         this.transform.position += _velocity * Time.deltaTime;
+        //this.transform.Translate(_velocity * Time.deltaTime);
 
         _camera.SetTargetPosition(this.transform.position + _velocity.normalized * 2f + new Vector3(0, 10, 0));
 
@@ -216,10 +217,7 @@ public class NecrovorePlayer : MonoBehaviour
         }
         else if (other.CompareTag("BlueAttack") || other.CompareTag("RedAttack"))
         {
-            _maxHunger -= _hungerLostOnHit;
-            _hunger = Mathf.Min(_maxHunger, _hunger);
-            GameManager.Instance.ShortenSlider(_maxHunger / _baseMaxHunger, _hunger / _maxHunger);
-            print("oof");
+            GetHit();
         }
     }
 
@@ -229,5 +227,13 @@ public class NecrovorePlayer : MonoBehaviour
         {
             _corpses.Remove(other.GetComponent<Corpse>());
         }
+    }
+
+    public void GetHit()
+    {
+        _maxHunger -= _hungerLostOnHit;
+        _hunger = Mathf.Min(_maxHunger, _hunger);
+        GameManager.Instance.ShortenSlider(_maxHunger / _baseMaxHunger, _hunger / _maxHunger);
+        print("oof");
     }
 }
