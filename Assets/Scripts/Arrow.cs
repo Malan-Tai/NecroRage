@@ -16,6 +16,11 @@ public class Arrow : MonoBehaviour
         ArrowFactory.instance.arrowDied(this.gameObject);
     }
 
+    public void SetVelocity(Vector3 velocity)
+    {
+        _velocity = velocity;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Component comp;
