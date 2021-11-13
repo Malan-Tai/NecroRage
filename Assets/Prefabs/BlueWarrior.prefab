@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2455964627960387222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 2}
+  m_LocalPosition: {x: 0, y: 1, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2455964628299860198}
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   corpsePrefab: {fileID: 6529309704958929736, guid: 948d53463bb3b4a489b80c06b79a8fce, type: 3}
+  corpseContainer: {fileID: 0}
 --- !u!1 &2455964628299860120
 GameObject:
   m_ObjectHideFlags: 0

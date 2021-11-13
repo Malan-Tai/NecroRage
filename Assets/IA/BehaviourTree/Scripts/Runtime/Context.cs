@@ -31,7 +31,7 @@ namespace BehaviourTreeAI {
             context.gameObject = gameObject;
             context.transform = gameObject.transform;
             context.animator = gameObject.GetComponent<Animator>();
-            context.physics = gameObject.GetComponent<Rigidbody>();
+            context.physics = gameObject.GetComponentInChildren<Rigidbody>();
             context.agent = gameObject.GetComponent<NavMeshAgent>();
             context.sphereCollider = gameObject.GetComponent<SphereCollider>();
             context.boxCollider = gameObject.GetComponent<BoxCollider>();

@@ -14,6 +14,8 @@ namespace BehaviourTreeAI {
         public GameObject closestEntity;
         public bool isAttacking = false;
 
+        public Corpse eatenCorpse;
+
         public void Update()
         {
             
