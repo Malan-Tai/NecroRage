@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField]
     private string mainScene;
+    [SerializeField]
+    private string menuScene;
 
     [SerializeField]
     private GameObject options;
@@ -34,5 +36,10 @@ public class MainMenu : MonoBehaviour
     {
         options.SetActive(false);
         main.SetActive(true);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(menuScene);
     }
 }
