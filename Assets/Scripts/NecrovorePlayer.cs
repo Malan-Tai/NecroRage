@@ -57,19 +57,22 @@ public class NecrovorePlayer : MonoBehaviour
 
         _hunger -= _hungerDrainRate * Time.deltaTime;
         float dmg = 0f;
-        float bonusDmg = 0f;
         if (_eatenCorpse != null)
         {
-            float fullDmg = _eatingDamage * Time.deltaTime;
-            dmg = _eatenCorpse.TakeDamage(fullDmg);
+            dmg = _eatenCorpse.TakeDamage(_eatingDamage * Time.deltaTime);
             _hunger += dmg;
-
-            bonusDmg = fullDmg - dmg;
         }
+        float fullBelly = _hunger - _maxHunger;
         _hunger = Mathf.Min(_maxHunger, _hunger);
 
-        if (_hunger <= 0) GameManager.Instance.PrintScores();
-        else GameManager.Instance.UpdateScore(Time.deltaTime, dmg, bonusDmg);
+        GameManager.Instance.SetSlider(_hunger / _maxHunger);
+
+        if (_hunger <= 0)
+        {
+            GameManager.Instance.PrintScores();
+            this.gameObject.SetActive(false);
+        }
+        else GameManager.Instance.UpdateScore(Time.deltaTime, dmg, fullBelly);
     }
 
     public void Dash()
@@ -110,8 +113,8 @@ public class NecrovorePlayer : MonoBehaviour
         if (_corpses.Count <= 0 || _eatenCorpse != null) return;
 
         _eatenCorpse = _corpses[0];
-        //_eatenCorpse.GetJoin(GetComponent<Rigidbody>());
-        _corpses[0].transform.SetParent(this.transform, true);
+        _eatenCorpse.StartJoint(GetComponent<Rigidbody>());
+        //_corpses[0].transform.SetParent(this.transform, true);
 
         _eatenCorpse.OnDeath += FinishEating;
 
@@ -131,7 +134,8 @@ public class NecrovorePlayer : MonoBehaviour
         if (_eatenCorpse == null) return;
 
         _eatenCorpse.OnDeath -= FinishEating;
-        _eatenCorpse.transform.SetParent(null, true);
+        //_eatenCorpse.transform.SetParent(null, true);
+        _eatenCorpse.StopJoint();
         _eatenCorpse = null;
 
         _camera.ZoomOut();

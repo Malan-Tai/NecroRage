@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,15 +32,26 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float _fullBellyBonus;
 
-    public void UpdateScore(float deltaTime, float eatenDamage, float bonusDamage)
+    [SerializeField]
+    public NecrovorePlayer _player;
+
+    [SerializeField]
+    private Slider _hungerSlider;
+
+    public void UpdateScore(float deltaTime, float eatenDamage, float fullBelly)
     {
         _timeScore += deltaTime * _timeBonus;
         _eatenScore += eatenDamage * _eatenBonus;
-        if (bonusDamage > 0) _fullBellyScore += eatenDamage * _fullBellyBonus;
+        if (fullBelly > 0) _fullBellyScore += fullBelly * _fullBellyBonus;
     }
 
     public void PrintScores()
     {
         print("SCORES : time=" + _timeScore + " | eaten=" + _eatenScore + " | full belly=" + _fullBellyScore);
+    }
+
+    public void SetSlider(float hungerRatio)
+    {
+        _hungerSlider.SetValueWithoutNotify(hungerRatio);
     }
 }

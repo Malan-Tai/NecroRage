@@ -10,12 +10,12 @@ public class Corpse : MonoBehaviour
     public delegate void EventDie();
     public event EventDie OnDeath;
 
-    //private Joint _joint;
+    private Joint _joint;
 
-    //private void Start()
-    //{
-    //    _joint = GetComponent<Joint>();
-    //}
+    private void Start()
+    {
+        _joint = GetComponent<Joint>();
+    }
 
     public float TakeDamage(float damage)
     {
@@ -31,8 +31,13 @@ public class Corpse : MonoBehaviour
         return actuallyTaken;
     }
 
-    //public void GetJoin(Rigidbody body)
-    //{
-    //    _joint.connectedBody = body;
-    //}
+    public void StartJoint(Rigidbody body)
+    {
+        _joint.connectedBody = body;
+    }
+
+    public void StopJoint()
+    {
+        _joint.connectedBody = null;
+    }
 }
