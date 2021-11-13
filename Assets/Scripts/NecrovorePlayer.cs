@@ -104,7 +104,8 @@ public class NecrovorePlayer : MonoBehaviour
         {
             GameManager.Instance.StartCoroutine(_camera.Shake(0.3f, 0.4f));
             GameManager.Instance.PrintScores();
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            GameManager.Instance.gameObject.GetComponent<Defeat>().GameOver();
         }
         else GameManager.Instance.UpdateScore(Time.deltaTime, dmg, fullBelly);
     }
