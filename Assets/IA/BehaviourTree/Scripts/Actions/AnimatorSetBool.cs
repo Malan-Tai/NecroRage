@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTreeAI;
 
-public class SetAttacking : ActionNode
+public class AnimatorSetBool : ActionNode
 {
-    public bool valueToSet;
-
     protected override void OnStart() {
     }
 
@@ -14,7 +12,6 @@ public class SetAttacking : ActionNode
     }
 
     protected override State OnUpdate() {
-        blackboard.isAttacking = valueToSet;
         return State.Success;
     }
 }
