@@ -46,8 +46,8 @@ public class WarriorSpawner : MonoBehaviour
         }
 
 
-        int blueToSpawn = blueSpawn ? 2 : 1;
-        int redToSpawn = blueSpawn ? 1 : 2;
+        int blueToSpawn = blueSpawn ? 1 : 0;
+        int redToSpawn = blueSpawn ? 0 : 1;
 
         for (int i = 0; i < blueToSpawn ; i++)
         {
