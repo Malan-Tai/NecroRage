@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,15 +22,36 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    private float _timeScore;
+    private float _eatenScore;
+    private float _fullBellyScore;
+    [SerializeField]
+    private float _timeBonus;
+    [SerializeField]
+    private float _eatenBonus;
+    [SerializeField]
+    private float _fullBellyBonus;
+
+    [SerializeField]
+    public NecrovorePlayer _player;
+
+    [SerializeField]
+    private Slider _hungerSlider;
+
+    public void UpdateScore(float deltaTime, float eatenDamage, float fullBelly)
     {
-        
+        _timeScore += deltaTime * _timeBonus;
+        _eatenScore += eatenDamage * _eatenBonus;
+        if (fullBelly > 0) _fullBellyScore += fullBelly * _fullBellyBonus;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PrintScores()
     {
-        
+        print("SCORES : time=" + _timeScore + " | eaten=" + _eatenScore + " | full belly=" + _fullBellyScore);
+    }
+
+    public void SetSlider(float hungerRatio)
+    {
+        _hungerSlider.SetValueWithoutNotify(hungerRatio);
     }
 }
