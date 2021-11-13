@@ -10,7 +10,7 @@ public class ArrowSpawner : MonoBehaviour
 
     [SerializeField] private int startSpawnThreshold = 3;
 
-    [SerializeField] private float _arrowSpeed = 10;
+    [SerializeField] private float _arrowSpeed = 2;
 
     [SerializeField] private Transform _playerTransform;
 
@@ -33,8 +33,8 @@ public class ArrowSpawner : MonoBehaviour
             unit.y = 0;
 
             GameObject arrow = ArrowFactory.instance.GetArrow(unit);
-            arrow.GetComponent<Arrow>().SetVelocity((_playerTransform.position - unit) * _arrowSpeed);
             arrow.transform.eulerAngles = new Vector3(90f, 0f, 0f);
+            arrow.GetComponent<Arrow>().SetVelocity((_playerTransform.position - unit).normalized * _arrowSpeed);
         }
     }
 }

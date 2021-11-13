@@ -37,7 +37,6 @@ public class ArrowFactory : MonoBehaviour
         {
             newArrow = Instantiate(arrowPrefab, position, Quaternion.identity);
             newArrow.transform.SetParent(arrowContainer.transform);
-
         }
         arrowCounter++;
         return newArrow;
@@ -45,8 +44,8 @@ public class ArrowFactory : MonoBehaviour
 
     public void arrowDied(GameObject arrow)
     {
-        arrow.transform.parent.gameObject.SetActive(false);
-        deadArrow.Enqueue(arrow.transform.parent.gameObject);
+        arrow.gameObject.SetActive(false);
+        deadArrow.Enqueue(arrow.gameObject);
         arrowCounter--;
     }
 }

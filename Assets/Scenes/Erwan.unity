@@ -203,7 +203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &316404664
 Transform:
   m_ObjectHideFlags: 0
@@ -1061,7 +1061,7 @@ MonoBehaviour:
   _cameraShakeEatingInterval: 0.7
   _cameraShakeEatingMagnitude: 0.3
   _cameraShakeEatingDuration: 0.15
-  _hungerLostOnHit: 0
+  _hungerLostOnHit: 20
 --- !u!114 &1110350364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1424,7 +1424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1545438199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1437,8 +1437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c92462425e9576478bd3df94e6f1693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnradius: 15
-  startSpawnThreshold: 3
+  _spawnradius: 40
+  startSpawnThreshold: 2
   _arrowSpeed: 10
   _playerTransform: {fileID: 1110350362}
 --- !u!4 &1545438200
