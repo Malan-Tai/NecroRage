@@ -21,7 +21,6 @@ public class Arrow : MonoBehaviour
 
     public void Die()
     {
-        print("arrow die");
         ArrowFactory.instance.arrowDied(this.gameObject);
     }
 
@@ -35,7 +34,6 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("trigger " + other.gameObject);
         Component comp;
         if (other.CompareTag("BlueSoldier") || other.CompareTag("RedSoldier"))
         {
