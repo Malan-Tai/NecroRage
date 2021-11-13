@@ -39,6 +39,8 @@ public class NecrovorePlayer : MonoBehaviour
         _camera = Camera.main.GetComponent<CustomCamera>();
 
         _corpses = new List<Corpse>();
+
+        _hunger = _maxHunger;
     }
 
     void Update()
@@ -54,8 +56,20 @@ public class NecrovorePlayer : MonoBehaviour
         }
 
         _hunger -= _hungerDrainRate * Time.deltaTime;
-        if (_eatenCorpse != null) _hunger += _eatenCorpse.TakeDamage(_eatingDamage * Time.deltaTime);
+        float dmg = 0f;
+        float bonusDmg = 0f;
+        if (_eatenCorpse != null)
+        {
+            float fullDmg = _eatingDamage * Time.deltaTime;
+            dmg = _eatenCorpse.TakeDamage(fullDmg);
+            _hunger += dmg;
+
+            bonusDmg = fullDmg - dmg;
+        }
         _hunger = Mathf.Min(_maxHunger, _hunger);
+
+        if (_hunger <= 0) GameManager.Instance.PrintScores();
+        else GameManager.Instance.UpdateScore(Time.deltaTime, dmg, bonusDmg);
     }
 
     public void Dash()

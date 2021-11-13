@@ -21,15 +21,25 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
+    private float _timeScore;
+    private float _eatenScore;
+    private float _fullBellyScore;
+    [SerializeField]
+    private float _timeBonus;
+    [SerializeField]
+    private float _eatenBonus;
+    [SerializeField]
+    private float _fullBellyBonus;
+
+    public void UpdateScore(float deltaTime, float eatenDamage, float bonusDamage)
     {
-        
+        _timeScore += deltaTime * _timeBonus;
+        _eatenScore += eatenDamage * _eatenBonus;
+        if (bonusDamage > 0) _fullBellyScore += eatenDamage * _fullBellyBonus;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PrintScores()
     {
-        
+        print("SCORES : time=" + _timeScore + " | eaten=" + _eatenScore + " | full belly=" + _fullBellyScore);
     }
 }
