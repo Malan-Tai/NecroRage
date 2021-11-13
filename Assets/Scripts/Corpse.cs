@@ -33,6 +33,7 @@ public class Corpse : MonoBehaviour
 
     public void StartJoint(Rigidbody body)
     {
+        this.transform.position = new Vector3(body.transform.position.x, 0, body.transform.position.z);
         _joint.connectedBody = body;
     }
 

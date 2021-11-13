@@ -66,6 +66,7 @@ public class NecrovorePlayer : MonoBehaviour
         if (_dashing && _currentDashTime >= _dashDuration)
         {
             _dashing = false;
+            if (_eatenCorpse != null && !Input.GetButton("Eat")) StopEating();
         }
 
         float dmg = 0f;
