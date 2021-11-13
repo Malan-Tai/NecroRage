@@ -6,7 +6,16 @@ public class WarriorDeath : MonoBehaviour
 {
     public void Die()
     {
-        transform.parent.gameObject.SetActive(false); // OUAIS OUAIS TOUT SA
+        if (gameObject.CompareTag("RedSoldier"))
+        {
+            WarriorFactory.instance.redWarriorDied(this.gameObject);
+        }
+        else
+        {
+            WarriorFactory.instance.blueWarriorDied(this.gameObject);
+        }
+
+        transform.parent.GetComponentInChildren<RangeSensor>().ClearEntities();
     }
 
     void OnTriggerEnter(Collider col)

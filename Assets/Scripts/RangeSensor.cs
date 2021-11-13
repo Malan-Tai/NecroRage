@@ -83,6 +83,11 @@ public class RangeSensor : MonoBehaviour
         }
     }
 
+    public void ClearEntities()
+    {
+        detectedCharacters.Clear();
+    }
+
     /*
     public void OnDrawGizmosSelected()
         {
