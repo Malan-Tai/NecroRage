@@ -21,6 +21,7 @@ public class Arrow : MonoBehaviour
 
     public void Die()
     {
+        print("arrow die");
         ArrowFactory.instance.arrowDied(this.gameObject);
     }
 
@@ -34,16 +35,17 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print("trigger " + other.gameObject);
         Component comp;
-        if (other.TryGetComponent(typeof(WarriorDeath), out comp))
+        if (other.CompareTag("BlueSoldier") || other.CompareTag("RedSoldier"))
         {
-            WarriorDeath warrior = comp as WarriorDeath;
+            WarriorDeath warrior = other.GetComponentInChildren<WarriorDeath>();
             warrior.Die();
             Die();
         }
-        else if (other.TryGetComponent(typeof(NecrovoreDeath), out comp))
+        else if (other.CompareTag("Necrophage"))
         {
-            NecrovoreDeath necrovore = comp as NecrovoreDeath;
+            NecrovoreDeath necrovore = GetComponentInChildren<NecrovoreDeath>();
             necrovore.Die();
             Die();
         }
@@ -53,9 +55,13 @@ public class Arrow : MonoBehaviour
             necrovore.GetHit();
             Die();
         }
-        else if (!other.CompareTag("Ground"))
+        else if (other.CompareTag("Corpse") || other.CompareTag("Obstacle"))
         {
             Die();
         }
+        //else if (!other.CompareTag("Ground"))
+        //{
+        //    Die();
+        //}
     }
 }
