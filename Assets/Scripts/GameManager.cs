@@ -54,4 +54,27 @@ public class GameManager : MonoBehaviour
     {
         _hungerSlider.SetValueWithoutNotify(hungerRatio);
     }
+
+    private IEnumerator SliderShakeCoroutine(float duration, float magnitude)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float theta = Random.Range(-1f, 1f) * magnitude;
+
+            _hungerSlider.transform.eulerAngles = new Vector3(0, 0, theta);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        _hungerSlider.transform.eulerAngles = Vector3.zero;
+    }
+
+    public void SliderShake(float duration, float magnitude)
+    {
+        StartCoroutine(SliderShakeCoroutine(duration, magnitude));
+    }
 }

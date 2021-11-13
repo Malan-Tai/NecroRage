@@ -47,6 +47,10 @@ public class NecrovorePlayer : MonoBehaviour
 
     private List<Corpse> _corpses;
 
+    public bool Dashing { get => _dashing; }
+    public bool Eating { get => _eatenCorpse != null; }
+    public bool Walking { get => !Dashing && !Eating && _velocity != Vector3.zero; }
+
     private void Start()
     {
         _camera = Camera.main.GetComponentInParent<CustomCamera>();
@@ -81,6 +85,9 @@ public class NecrovorePlayer : MonoBehaviour
                 _currentCamShakeEatingTime = _cameraShakeEatingInterval;
                 _hunger += _eatenHunger;
                 _eatenHunger = 0f;
+                GameManager.Instance.SliderShake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude * 4f);
+
+                BloodParticleSystemHandler.Instance.SpawnBlood(this.transform.position, new Vector3(1, 0, 0));
             }
             _currentCamShakeEatingTime -= Time.deltaTime;
         }
@@ -104,7 +111,7 @@ public class NecrovorePlayer : MonoBehaviour
 
     public void Dash()
     {
-        if (_dashing || _eatenCorpse != null) return;
+        if (_dashing || _eatenCorpse != null || _velocity == Vector3.zero) return;
 
         _dashing = true;
         _currentDashTime = 0f;
