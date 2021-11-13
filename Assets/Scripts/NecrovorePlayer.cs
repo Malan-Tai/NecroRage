@@ -85,6 +85,7 @@ public class NecrovorePlayer : MonoBehaviour
                 _currentCamShakeEatingTime = _cameraShakeEatingInterval;
                 _hunger += _eatenHunger;
                 _eatenHunger = 0f;
+                GameManager.Instance.SliderShake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude * 4f);
             }
             _currentCamShakeEatingTime -= Time.deltaTime;
         }
