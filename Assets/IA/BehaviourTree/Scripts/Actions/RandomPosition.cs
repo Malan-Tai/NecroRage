@@ -5,7 +5,8 @@ using BehaviourTreeAI;
 
 public class RandomPosition : ActionNode
 {
-    public Vector2 min = Vector2.one * -10;
+    public float minDistance = 5f;
+    public float maxDistance = 10f;
     public Vector2 max = Vector2.one * 10;
     public float centerProximity = 40;
 
@@ -26,8 +27,19 @@ public class RandomPosition : ActionNode
 
         else
         {
-            blackboard.moveToPosition.x = context.transform.position.x + Random.Range(min.x, max.x);
-            blackboard.moveToPosition.z = context.transform.position.z + Random.Range(min.y, max.y);
+            float posX = Random.Range(-maxDistance, maxDistance);
+            while (posX < minDistance && posX > -minDistance)
+            {
+                posX = Random.Range(-maxDistance, maxDistance);
+            }
+            float posY = Random.Range(-maxDistance, maxDistance);
+            while (posY < minDistance && posY > -minDistance)
+            {
+                posY = Random.Range(-maxDistance, maxDistance);
+            }
+
+            blackboard.moveToPosition.x = context.transform.position.x + posX;
+            blackboard.moveToPosition.z = context.transform.position.z + posY;
         }
         
         return State.Success;

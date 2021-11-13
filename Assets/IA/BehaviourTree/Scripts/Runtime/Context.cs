@@ -22,6 +22,7 @@ namespace BehaviourTreeAI {
         // Add other game specific systems here
 
         public RangeSensor sensor;
+        public NecrovoreRangeSensor necrovoreSensor;
         public Collider attackCollider;
 
         public static Context CreateFromGameObject(GameObject gameObject) {
@@ -39,7 +40,13 @@ namespace BehaviourTreeAI {
             
             // Add whatever else you need here...
             context.sensor = gameObject.GetComponentInChildren<RangeSensor>();
-            context.attackCollider = context.transform.Find("Sword Collider").GetComponent<Collider>();
+            context.necrovoreSensor =  gameObject.GetComponentInChildren<NecrovoreRangeSensor>();
+
+            if (!context.gameObject.CompareTag("Necrophage"))
+            {
+                context.attackCollider = context.transform.Find("Sword Collider").GetComponent<Collider>();
+            }
+            
 
             return context;
         }
