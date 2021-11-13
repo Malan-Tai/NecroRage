@@ -60,6 +60,22 @@ public class NecrovoreRangeSensor : MonoBehaviour
         return result;
     }
 
+    public GameObject GetNearestCorpse()
+    {
+        float distance = Mathf.Infinity;
+        GameObject result = null;
+        foreach (GameObject character in detectedCharacters)
+        {
+            if (Vector3.Distance(transform.position,character.transform.position) < distance && character.CompareTag("Corpse"))
+            {
+                result = character;
+                distance = Vector3.Distance(transform.position,character.transform.position);
+            }
+        }
+        return result;
+    }
+
+
     public bool CanSeeEntity()
     {
         return (detectedCharacters.Count > 0);

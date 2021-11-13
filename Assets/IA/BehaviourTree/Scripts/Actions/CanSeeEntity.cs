@@ -16,7 +16,7 @@ public class CanSeeEntity : ActionNode
         {
             blackboard.closestEntity = context.sensor.GetNearestDetected();
             return State.Success;
-        } 
+        }
         return State.Failure;
     }
 }

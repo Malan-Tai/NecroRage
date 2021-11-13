@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTreeAI;
 
-public class IsInRangeToAttack : ActionNode
+public class IsOnCorpse : ActionNode
 {
     public float range;
 

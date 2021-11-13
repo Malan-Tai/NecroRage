@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTreeAI;
 
-public class IsInRangeToAttack : ActionNode
+public class corpseStillAlive : ActionNode
 {
-    public float range;
-
     protected override void OnStart() {
     }
 
@@ -14,15 +12,13 @@ public class IsInRangeToAttack : ActionNode
     }
 
     protected override State OnUpdate() {
-        if (Vector3.Distance(context.transform.position, blackboard.closestEntity.transform.position) <= range)
+        if (blackboard.eatenCorpse.gameObject.activeInHierarchy == false)
         {
-            return State.Success;
-        } 
-        else
-        {
-            //Debug.Log("NOTINRANGE");
+            blackboard.eatenCorpse.StopJoint();
+            blackboard.eatenCorpse = null;
+            context.necrovoreSensor.RefreshEntities();
             return State.Failure;
         }
-        
+        return State.Success;
     }
 }
