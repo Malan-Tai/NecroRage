@@ -11,6 +11,12 @@ public class NecrovorePlayer : MonoBehaviour
     private float _hunger;
     [SerializeField]
     private float _hungerDrainRate;
+    [SerializeField]
+    private float _eatingDamage;
+    [SerializeField]
+    private float _eatingSlowness;
+
+    private Corpse _eatenCorpse = null;
 
     [SerializeField]
     private float _speed;
@@ -26,9 +32,13 @@ public class NecrovorePlayer : MonoBehaviour
 
     private Vector3 _velocity;
 
+    private List<Corpse> _corpses;
+
     private void Start()
     {
         _camera = Camera.main.GetComponent<CustomCamera>();
+
+        _corpses = new List<Corpse>();
     }
 
     void Update()
@@ -44,16 +54,20 @@ public class NecrovorePlayer : MonoBehaviour
         }
 
         _hunger -= _hungerDrainRate * Time.deltaTime;
+        if (_eatenCorpse != null) _hunger += _eatenCorpse.TakeDamage(_eatingDamage * Time.deltaTime);
+        _hunger = Mathf.Min(_maxHunger, _hunger);
     }
 
     public void Dash()
     {
-        if (_dashing) return;
+        if (_dashing || _eatenCorpse != null) return;
 
         _dashing = true;
         _currentDashTime = 0f;
 
         _velocity *= _dashSpeedBonus;
+
+        _hunger -= _dashHungerDrain;
     }
 
     public void SetVelocity(float x, float y)
@@ -61,11 +75,67 @@ public class NecrovorePlayer : MonoBehaviour
         if (_dashing) return;
 
         _velocity = new Vector3(x, 0, y).normalized * _speed;
-        _hunger -= _dashHungerDrain;
 
-        if (_velocity.sqrMagnitude > 0.01f)
+        if (_eatenCorpse != null)
+        {
+            _velocity *= _eatingSlowness;
+
+            if (_velocity.sqrMagnitude > 0.01f)
+            {
+                transform.rotation = Quaternion.LookRotation(Vector3.up, -_velocity);
+            }
+        }
+        else if (_velocity.sqrMagnitude > 0.01f)
         {
             transform.rotation = Quaternion.LookRotation(Vector3.up, _velocity);
+        }
+    }
+
+    public void StartEating()
+    {
+        if (_corpses.Count <= 0 || _eatenCorpse != null) return;
+
+        _eatenCorpse = _corpses[0];
+        //_eatenCorpse.GetJoin(GetComponent<Rigidbody>());
+        _corpses[0].transform.SetParent(this.transform, true);
+
+        _eatenCorpse.OnDeath += FinishEating;
+
+        _camera.ZoomIn();
+    }
+
+    public void FinishEating()
+    {
+        if (_eatenCorpse == null) return;
+
+        _corpses.Remove(_eatenCorpse);
+        StopEating();
+    }
+
+    public void StopEating()
+    {
+        if (_eatenCorpse == null) return;
+
+        _eatenCorpse.OnDeath -= FinishEating;
+        _eatenCorpse.transform.SetParent(null, true);
+        _eatenCorpse = null;
+
+        _camera.ZoomOut();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Corpse"))
+        {
+            _corpses.Add(other.GetComponent<Corpse>());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Corpse"))
+        {
+            _corpses.Remove(other.GetComponent<Corpse>());
         }
     }
 }

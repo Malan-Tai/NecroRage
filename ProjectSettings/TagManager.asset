@@ -10,6 +10,7 @@ TagManager:
   - Necrophage
   - BlueAttack
   - RedAttack
+  - Corpse
   layers:
   - Default
   - TransparentFX

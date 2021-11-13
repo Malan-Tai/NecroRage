@@ -16,5 +16,8 @@ public class InputController : MonoBehaviour
         _player.SetVelocity(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         if (Input.GetButtonDown("Jump")) _player.Dash();
+
+        if (Input.GetButtonDown("Eat")) _player.StartEating();
+        else if (Input.GetButtonUp("Eat")) _player.StopEating();
     }
 }
