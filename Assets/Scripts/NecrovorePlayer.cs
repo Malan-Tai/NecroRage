@@ -8,6 +8,7 @@ public class NecrovorePlayer : MonoBehaviour
 
     [SerializeField]
     private float _maxHunger;
+    private float _baseMaxHunger;
     private float _hunger;
     [SerializeField]
     private float _hungerDrainRate;
@@ -43,6 +44,9 @@ public class NecrovorePlayer : MonoBehaviour
     private float _cameraShakeEatingDuration;
     private float _currentCamShakeEatingTime = 0f;
 
+    [SerializeField]
+    private float _hungerLostOnHit;
+
     private Vector3 _velocity;
 
     private List<Corpse> _corpses;
@@ -58,6 +62,7 @@ public class NecrovorePlayer : MonoBehaviour
         _corpses = new List<Corpse>();
 
         _hunger = _maxHunger;
+        _baseMaxHunger = _maxHunger;
     }
 
     void Update()
@@ -207,6 +212,13 @@ public class NecrovorePlayer : MonoBehaviour
             {
                 StartEating(corpse);
             }
+        }
+        else if (other.CompareTag("BlueAttack") || other.CompareTag("RedAttack"))
+        {
+            _maxHunger -= _hungerLostOnHit;
+            _hunger = Mathf.Min(_maxHunger, _hunger);
+            GameManager.Instance.ShortenSlider(_maxHunger / _baseMaxHunger, _hunger / _maxHunger);
+            print("oof");
         }
     }
 

@@ -37,6 +37,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private Slider _hungerSlider;
+    private float _hungerSliderBaseWidth;
+
+    private void Start()
+    {
+        _hungerSliderBaseWidth = _hungerSlider.GetComponent<RectTransform>().rect.width;
+    }
 
     public void UpdateScore(float deltaTime, float eatenDamage, float fullBelly)
     {
@@ -76,5 +82,11 @@ public class GameManager : MonoBehaviour
     public void SliderShake(float duration, float magnitude)
     {
         StartCoroutine(SliderShakeCoroutine(duration, magnitude));
+    }
+
+    public void ShortenSlider(float newMaxRatio, float currentRatio)
+    {
+        RectTransform rect = _hungerSlider.GetComponent<RectTransform>();
+        rect.sizeDelta = new Vector2(newMaxRatio * _hungerSliderBaseWidth, rect.sizeDelta.y);
     }
 }
