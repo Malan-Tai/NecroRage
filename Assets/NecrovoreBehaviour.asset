@@ -19,6 +19,7 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
+    isAttacking: 0
   description: 
   drawGizmos: 0
 --- !u!114 &-6647753084687041405
@@ -40,6 +41,7 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
+    isAttacking: 0
   description: 
   drawGizmos: 0
   minDuration: 0
@@ -64,6 +66,7 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
+    isAttacking: 0
   description: 
   drawGizmos: 0
   speed: 5
@@ -90,6 +93,7 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
+    isAttacking: 0
   description: 
   drawGizmos: 0
   children:
@@ -114,6 +118,7 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
+    isAttacking: 0
   description: 
   drawGizmos: 0
   children:
@@ -139,6 +144,7 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
+    isAttacking: 0
   description: 
   drawGizmos: 0
   speed: 8
@@ -165,6 +171,7 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
+    isAttacking: 0
   description: 
   drawGizmos: 0
   child: {fileID: -4082217563771964220}
@@ -197,8 +204,9 @@ MonoBehaviour:
   - {fileID: -5446996667329616066}
   - {fileID: -9157077211963618492}
   blackboard:
-    moveToPosition: {x: -18.46905, y: 0, z: -43.860954}
+    moveToPosition: {x: -24.343662, y: 0, z: -43.859417}
     closestEntity: {fileID: 0}
+    isAttacking: 0
 --- !u!114 &3725665388589340063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +226,7 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
+    isAttacking: 0
   description: 
   drawGizmos: 0
 --- !u!114 &6939700087899140121
@@ -239,6 +248,7 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
+    isAttacking: 0
   description: 
   drawGizmos: 0
   child: {fileID: -1805411796349339866}
@@ -261,6 +271,7 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
+    isAttacking: 0
   description: 
   drawGizmos: 0
   children:
@@ -286,6 +297,7 @@ MonoBehaviour:
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
+    isAttacking: 0
   description: 
   drawGizmos: 0
   minDistance: 10
