@@ -100,6 +100,7 @@ MonoBehaviour:
   children:
   - {fileID: 946807936392337868}
   - {fileID: 4669129268244110592}
+  - {fileID: 3351971023130838479}
   - {fileID: -5201853189782803019}
 --- !u!114 &-5722630482938125169
 MonoBehaviour:
@@ -168,7 +169,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 7508a104d8ade7141a7f522433344ed5
-  position: {x: 264.82303, y: 575.6357}
+  position: {x: 308.6425, y: 569.3875}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -323,7 +324,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 9bd5b047b58dc94439f644c682f2c0d0
-  position: {x: -1122.7723, y: 712.74896}
+  position: {x: -1021.8, y: 713.0001}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -425,11 +426,36 @@ MonoBehaviour:
   - {fileID: -58790999148168449}
   - {fileID: -8551180912952130359}
   - {fileID: -5201853189782803019}
+  - {fileID: 3351971023130838479}
+  - {fileID: 87452677134612348}
   blackboard:
-    moveToPosition: {x: -8.613888, y: 0, z: -4.153408}
+    moveToPosition: {x: -94.05627, y: 0, z: 53.878223}
+    closestEntity: {fileID: 0}
+    isAttacking: 1
+    eatenCorpse: {fileID: 0}
+--- !u!114 &87452677134612348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509c2a96b51063849a3439e0b7c61450, type: 3}
+  m_Name: AnimatorSetBool
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 5e16b37ba5a82bf46a2f619cb9ac0bb2
+  position: {x: 0, y: 0}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
     isAttacking: 0
     eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
 --- !u!114 &106692993505814000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,7 +628,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: a13d68847078ca34893fb96c3342dd34
-  position: {x: -105.17704, y: 562.6356}
+  position: {x: -221, y: 566.065}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -625,7 +651,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 402de4b7e1931ba4f8c02a43bdc18702
-  position: {x: 808.82294, y: 580.6356}
+  position: {x: 709.42255, y: 568.09753}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -679,7 +705,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: f66599d9fa432c149ba957f1669a6e4f
-  position: {x: -925.4223, y: 714}
+  position: {x: -823.8, y: 714}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -715,6 +741,29 @@ MonoBehaviour:
   - {fileID: 5424313978861863964}
   - {fileID: -6230269102062036594}
   - {fileID: 443972078020401990}
+--- !u!114 &3351971023130838479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509c2a96b51063849a3439e0b7c61450, type: 3}
+  m_Name: AnimatorSetBool
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 6ab06347f2cedc14ebbebc6a488e5e55
+  position: {x: 127.257545, y: 568}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
 --- !u!114 &4669129268244110592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,7 +779,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 0b31a3529d751254b87a14957ff40b29
-  position: {x: 70.82301, y: 567.63556}
+  position: {x: -44.999977, y: 571.065}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -753,7 +802,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d06b4daa6e3891c40ae39f534dd9baf5
-  position: {x: 603.823, y: 578.63556}
+  position: {x: 552.42255, y: 567.09753}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}

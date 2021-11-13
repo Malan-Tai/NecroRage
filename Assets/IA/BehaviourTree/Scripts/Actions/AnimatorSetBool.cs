@@ -5,6 +5,8 @@ using BehaviourTreeAI;
 
 public class AnimatorSetBool : ActionNode
 {
+    public string boolName = "";
+
     protected override void OnStart() {
     }
 
