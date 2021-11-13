@@ -65,7 +65,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d51eb7bf6ae888044b26eb4765e28370
-  position: {x: -428.7211, y: 1139.3132}
+  position: {x: -420, y: 1124}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -229,6 +229,30 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   valueToSet: 0
+--- !u!114 &-2269428035088383950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b8c41bca924394b90044d56308a355, type: 3}
+  m_Name: AnimatorSetTrigger
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 92e942668326f7e44a120e77494fc4fe
+  position: {x: -579, y: 1126}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  triggerName: Attacking
 --- !u!114 &-2190279550178033002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +280,9 @@ MonoBehaviour:
   - {fileID: -1662763291229693575}
   - {fileID: 362956846933092516}
   - {fileID: 106692993505814000}
+  - {fileID: 7007738964219997131}
   - {fileID: 2708464079232763824}
+  - {fileID: -2269428035088383950}
   - {fileID: -8260802129482000647}
   - {fileID: 5828706825660637278}
   - {fileID: -8551180912952130359}
@@ -301,7 +327,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e3e48442fb7681340bd66d74cb1ebcb4
-  position: {x: -1321.3741, y: 1122.7996}
+  position: {x: -1411.3527, y: 1118.6775}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -324,7 +350,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 9bd5b047b58dc94439f644c682f2c0d0
-  position: {x: -1021.8, y: 713.0001}
+  position: {x: -1146.3152, y: 713.00006}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -428,8 +454,11 @@ MonoBehaviour:
   - {fileID: -5201853189782803019}
   - {fileID: 3351971023130838479}
   - {fileID: 87452677134612348}
+  - {fileID: 7007738964219997131}
+  - {fileID: -2269428035088383950}
+  - {fileID: 4273933542916027742}
   blackboard:
-    moveToPosition: {x: -94.05627, y: 0, z: 53.878223}
+    moveToPosition: {x: 62.673, y: 0, z: 26.250065}
     closestEntity: {fileID: 0}
     isAttacking: 1
     eatenCorpse: {fileID: 0}
@@ -448,7 +477,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 5e16b37ba5a82bf46a2f619cb9ac0bb2
-  position: {x: 0, y: 0}
+  position: {x: 864.9377, y: 572.2275}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -456,6 +485,8 @@ MonoBehaviour:
     eatenCorpse: {fileID: 0}
   description: 
   drawGizmos: 0
+  boolName: Walking
+  boolValue: 1
 --- !u!114 &106692993505814000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +502,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 81bdc111d2c0ffe48bdf216d27115567
-  position: {x: -978.3742, y: 1127.7996}
+  position: {x: -1067, y: 1123}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -534,6 +565,7 @@ MonoBehaviour:
   children:
   - {fileID: -1371221853212968045}
   - {fileID: 3036520251692231575}
+  - {fileID: 4273933542916027742}
   - {fileID: 5478953607467744481}
   - {fileID: 669267344517588690}
 --- !u!114 &362956846933092516
@@ -551,7 +583,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: f3d6d38f0225d5a4d896d8ec478e29ec
-  position: {x: -1142.3741, y: 1126.7998}
+  position: {x: -1232.3528, y: 1122.6775}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -586,6 +618,7 @@ MonoBehaviour:
   children:
   - {fileID: 5342824925806541492}
   - {fileID: 2266996458380278018}
+  - {fileID: 87452677134612348}
   - {fileID: -1930996465661643027}
 --- !u!114 &669267344517588690
 MonoBehaviour:
@@ -679,7 +712,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 2f654af918f1e794b9049f17f01fbf44
-  position: {x: -827.37415, y: 1127.7996}
+  position: {x: -742.36, y: 1124.0325}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -705,7 +738,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: f66599d9fa432c149ba957f1669a6e4f
-  position: {x: -823.8, y: 714}
+  position: {x: -948.3151, y: 714}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -756,7 +789,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 6ab06347f2cedc14ebbebc6a488e5e55
-  position: {x: 127.257545, y: 568}
+  position: {x: 125.67749, y: 568}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
     closestEntity: {fileID: 0}
@@ -764,6 +797,33 @@ MonoBehaviour:
     eatenCorpse: {fileID: 0}
   description: 
   drawGizmos: 0
+  boolName: Walking
+  boolValue: 1
+--- !u!114 &4273933542916027742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509c2a96b51063849a3439e0b7c61450, type: 3}
+  m_Name: AnimatorSetBool
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: da7d564f789db1d45820eb338b9b7548
+  position: {x: -757.52075, y: 710.99994}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  boolName: Walking
+  boolValue: 0
 --- !u!114 &4669129268244110592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +946,30 @@ MonoBehaviour:
     eatenCorpse: {fileID: 0}
   description: 
   drawGizmos: 0
+--- !u!114 &7007738964219997131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b8c41bca924394b90044d56308a355, type: 3}
+  m_Name: AnimatorSetTrigger
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 0497dbec5fc773947946446248eeae70
+  position: {x: -903, y: 1126}
+  blackboard:
+    moveToPosition: {x: 0, y: 0, z: 0}
+    closestEntity: {fileID: 0}
+    isAttacking: 0
+    eatenCorpse: {fileID: 0}
+  description: 
+  drawGizmos: 0
+  triggerName: Preparing
 --- !u!114 &7056264334752799092
 MonoBehaviour:
   m_ObjectHideFlags: 0

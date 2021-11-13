@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTreeAI;
 
-public class AnimatorSetBool : ActionNode
+public class AnimatorSetTrigger : ActionNode
 {
-    public string boolName = "";
-    public bool boolValue = true;
+    public string triggerName = "";
 
     protected override void OnStart() {
     }
@@ -15,7 +14,7 @@ public class AnimatorSetBool : ActionNode
     }
 
     protected override State OnUpdate() {
-        context.animator.SetBool(boolName,boolValue);
+        context.animator.SetTrigger(triggerName);
         return State.Success;
     }
 }
