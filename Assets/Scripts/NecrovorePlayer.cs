@@ -17,6 +17,7 @@ public class NecrovorePlayer : MonoBehaviour
     private float _eatingSlowness;
 
     private Corpse _eatenCorpse = null;
+    private float _eatenHunger = 0f;
 
     [SerializeField]
     private float _speed;
@@ -29,6 +30,10 @@ public class NecrovorePlayer : MonoBehaviour
     private bool _dashing = false;
     [SerializeField]
     private float _dashHungerDrain;
+    [SerializeField]
+    private float _cameraShakeDashMagnitude;
+    [SerializeField]
+    private float _cameraShakeDashDuration;
 
     [SerializeField]
     private float _cameraShakeEatingInterval;
@@ -63,19 +68,24 @@ public class NecrovorePlayer : MonoBehaviour
             _dashing = false;
         }
 
-        _hunger -= _hungerDrainRate * Time.deltaTime;
         float dmg = 0f;
         if (_eatenCorpse != null)
         {
             dmg = _eatenCorpse.TakeDamage(_eatingDamage * Time.deltaTime);
-            _hunger += dmg;
+            _eatenHunger += dmg - _hungerDrainRate * Time.deltaTime;
 
             if (_currentCamShakeEatingTime <= 0f)
             {
                 StartCoroutine(_camera.Shake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude));
                 _currentCamShakeEatingTime = _cameraShakeEatingInterval;
+                _hunger += _eatenHunger;
+                _eatenHunger = 0f;
             }
             _currentCamShakeEatingTime -= Time.deltaTime;
+        }
+        else
+        {
+            _hunger -= _hungerDrainRate * Time.deltaTime;
         }
         float fullBelly = _hunger - _maxHunger;
         _hunger = Mathf.Min(_maxHunger, _hunger);
@@ -101,6 +111,8 @@ public class NecrovorePlayer : MonoBehaviour
         _velocity *= _dashSpeedBonus;
 
         _hunger -= _dashHungerDrain;
+
+        StartCoroutine(_camera.Shake(_cameraShakeDashDuration, _cameraShakeDashMagnitude));
     }
 
     public void SetVelocity(float x, float y)
@@ -138,6 +150,20 @@ public class NecrovorePlayer : MonoBehaviour
         _camera.ZoomIn();
     }
 
+    public void StartEating(Corpse corpse)
+    {
+        if (_corpses.Count <= 0 || _eatenCorpse != null) return;
+
+        _eatenCorpse = corpse;
+        _eatenCorpse.StartJoint(GetComponent<Rigidbody>());
+
+        _currentCamShakeEatingTime = 0f;
+
+        _eatenCorpse.OnDeath += FinishEating;
+
+        _camera.ZoomIn();
+    }
+
     public void FinishEating()
     {
         if (_eatenCorpse == null) return;
@@ -154,6 +180,10 @@ public class NecrovorePlayer : MonoBehaviour
         _eatenCorpse.StopJoint();
         _eatenCorpse = null;
 
+        _hunger += _eatenHunger;
+        _eatenHunger = 0;
+        GameManager.Instance.SetSlider(_hunger / _maxHunger);
+
         _camera.ZoomOut();
     }
 
@@ -161,7 +191,12 @@ public class NecrovorePlayer : MonoBehaviour
     {
         if (other.CompareTag("Corpse"))
         {
-            _corpses.Add(other.GetComponent<Corpse>());
+            Corpse corpse = other.GetComponent<Corpse>();
+            _corpses.Add(corpse);
+            if (_dashing && _eatenCorpse == null)
+            {
+                StartEating(corpse);
+            }
         }
     }
 
