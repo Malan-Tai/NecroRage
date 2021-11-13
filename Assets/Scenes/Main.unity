@@ -1939,7 +1939,7 @@ MonoBehaviour:
   _timeBonus: 5
   _eatenBonus: 10
   _fullBellyBonus: 100
-  _player: {fileID: 0}
+  _player: {fileID: 1559476178}
   _hungerSlider: {fileID: 470683302}
 --- !u!4 &1063101300
 Transform:
@@ -1968,6 +1968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverCanvas: {fileID: 641899867}
+  _scoreText: {fileID: 894111078}
 --- !u!1 &1104881038
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,7 +2355,7 @@ GameObject:
   - component: {fileID: 1232812378}
   m_Layer: 6
   m_Name: 3dGround
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2864,6 +2865,17 @@ MonoBehaviour:
   startSpawnThreshold: 20
   spawnAwayFromPlayer: 15
   spawnBurstRadius: 10
+--- !u!114 &1559476178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4602323599991004460, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
+  m_PrefabInstance: {fileID: 715572829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a690ca964090ba44a7f33b2d7ab105a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1615684508
 GameObject:
   m_ObjectHideFlags: 0

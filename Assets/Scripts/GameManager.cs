@@ -91,4 +91,10 @@ public class GameManager : MonoBehaviour
         //rect.position = new Vector3((rect.sizeDelta.x - _hungerSliderBaseWidth) / 2f, 0, 0);
         rect.anchoredPosition3D = new Vector3((rect.sizeDelta.x - _hungerSliderBaseWidth) / 2f, 0, 0);
     }
+
+    public void GameOver()
+    {
+        _hungerSlider.gameObject.SetActive(false);
+        GetComponent<Defeat>().GameOver((int)(_timeScore + _eatenScore + _fullBellyScore));
+    }
 }
