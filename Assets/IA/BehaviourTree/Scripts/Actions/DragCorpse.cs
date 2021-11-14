@@ -46,10 +46,6 @@ public class DragCorpse : ActionNode
             blackboard.eatenCorpse.StopJoint();
             blackboard.eatenCorpse = null;
             context.necrovoreSensor.RefreshEntities();
-            if (Random.Range(0,3) == 0)
-            {
-                SoundManager.PlaySound(SoundManager.Sound.Blurp, context.transform.position,0.8f);
-            }
             return State.Failure;
         }
 

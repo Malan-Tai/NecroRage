@@ -14,7 +14,7 @@ public class NecrovoreDeath : MonoBehaviour
     }
     public void Die()
     {
-        SoundManager.PlaySound(SoundManager.Sound.Death_necrovore, transform.position,1f);
+        SoundAssets.instance.playNecrovoreDeathSound(transform.position,0.5f);
         NecrovoreFactory.instance.necrovoreDied(this.gameObject);
 
         transform.parent.GetComponentInChildren<NecrovoreRangeSensor>().ClearEntities();

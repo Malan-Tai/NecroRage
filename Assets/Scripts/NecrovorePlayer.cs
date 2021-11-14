@@ -54,6 +54,7 @@ public class NecrovorePlayer : MonoBehaviour
     public bool Dashing { get => _dashing; }
     public bool Eating { get => _eatenCorpse != null; }
     public bool Walking { get => !Dashing && !Eating && _velocity != Vector3.zero; }
+    public bool EatWalking { get => !Dashing && _velocity != Vector3.zero; }
 
     private void Start()
     {
@@ -123,6 +124,15 @@ public class NecrovorePlayer : MonoBehaviour
             GameManager.Instance.UpdateScore(Time.deltaTime, dmg, fullBelly);
 
             GameManager.Instance.pulsing = _hunger <= _baseMaxHunger * 0.25f;
+        }
+
+        if (Walking)
+        {
+            SoundAssets.instance.PlayFootstep(false);
+        }
+        else if (EatWalking)
+        {
+            SoundAssets.instance.PlayFootstep(true);
         }
     }
 

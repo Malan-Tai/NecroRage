@@ -20,6 +20,10 @@ public static class SoundManager
         Validation_menu,
         Movement_menu,
         Back_menu,
+        Death_soldier3, Death_soldier4, Death_soldier5, Death_soldier6,
+        Death_necrovore3, Death_necrovore4, Death_necrovore5, Death_necrovore6,
+        Scream1, Scream2,
+        FootSteps1, FootSteps2, FootSteps3,
         Test
     }
 
