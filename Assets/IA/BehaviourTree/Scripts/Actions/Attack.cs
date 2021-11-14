@@ -10,6 +10,7 @@ public class Attack : ActionNode
     protected override void OnStart() {
         startTime = Time.time;
         context.attackCollider.gameObject.SetActive(true);
+        SoundAssets.instance.playSwordSound(context.transform.position);
     }
 
     protected override void OnStop() {

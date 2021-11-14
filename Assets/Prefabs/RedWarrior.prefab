@@ -295,6 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   corpsePrefab: {fileID: 6529309704958929736, guid: 948d53463bb3b4a489b80c06b79a8fce, type: 3}
   corpseContainer: {fileID: 0}
+  distanceToDie: 120
 --- !u!1 &6739404596764140132
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +308,6 @@ GameObject:
   - component: {fileID: 6739404596764140134}
   - component: {fileID: 6739404596764140135}
   - component: {fileID: 6739404596764140137}
-  - component: {fileID: 6739404596764140139}
   m_Layer: 7
   m_Name: RedWarrior
   m_TagString: RedSoldier
@@ -381,20 +381,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tree: {fileID: 11400000, guid: 391a66d8ed2166a489f2bc9031a21342, type: 2}
---- !u!114 &6739404596764140139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6739404596764140132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa27142043c3af945a176b95da1235e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  corpsePrefab: {fileID: 0}
-  corpseContainer: {fileID: 0}
 --- !u!1 &6739404597340829735
 GameObject:
   m_ObjectHideFlags: 0

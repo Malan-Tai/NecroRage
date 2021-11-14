@@ -169,10 +169,10 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   speed: 8
-  stoppingDistance: 0.5
+  stoppingDistance: 1
   updateRotation: 1
   acceleration: 40
-  tolerance: 1
+  tolerance: 2
 --- !u!114 &-4082217563771964220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +359,7 @@ MonoBehaviour:
   - {fileID: -6375344283406254308}
   - {fileID: 8489990568921226883}
   blackboard:
-    moveToPosition: {x: 98.62693, y: 0, z: 103.57157}
+    moveToPosition: {x: 25.594355, y: 0, z: 44.87887}
     closestEntity: {fileID: 0}
     isAttacking: 0
     eatenCorpse: {fileID: 0}
@@ -545,7 +545,7 @@ MonoBehaviour:
     eatenCorpse: {fileID: 0}
   description: 
   drawGizmos: 0
-  range: 2
+  range: 3
 --- !u!114 &3651486719369585513
 MonoBehaviour:
   m_ObjectHideFlags: 0

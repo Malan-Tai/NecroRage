@@ -36,7 +36,7 @@ public class WarriorSpawner : MonoBehaviour
     void SpawnBurst(bool blueSpawn = true)
     {
 
-        Vector3 playerPosition = new Vector3(0f,0.5f,0f); // CHANGER AVEC LA VRAIE POSITION
+        Vector3 playerPosition = GameManager.Instance._player.transform.position; // CHANGER AVEC LA VRAIE POSITION
 
         Vector3 spawnRegion = playerPosition;
 

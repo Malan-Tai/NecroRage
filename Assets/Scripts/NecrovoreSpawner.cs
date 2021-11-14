@@ -27,7 +27,9 @@ public class NecrovoreSpawner : MonoBehaviour
     {
         int necrovoreCount = NecrovoreFactory.instance.necrovoreCounter;
 
-        if (necrovoreCount <= startSpawnThreshold)
+        float tooManyCorpsesModifier = Mathf.Lerp(1f,2f,Corpse.corpseCounter / 100f);
+
+        if (necrovoreCount <= startSpawnThreshold * tooManyCorpsesModifier)
         {
             SpawnBurst();
         } 
@@ -36,7 +38,7 @@ public class NecrovoreSpawner : MonoBehaviour
     void SpawnBurst()
     {
 
-        Vector3 playerPosition = new Vector3(0f,0.5f,0f); // CHANGER AVEC LA VRAIE POSITION
+        Vector3 playerPosition = GameManager.Instance._player.transform.position; // CHANGER AVEC LA VRAIE POSITION
 
         Vector3 spawnRegion = playerPosition;
 

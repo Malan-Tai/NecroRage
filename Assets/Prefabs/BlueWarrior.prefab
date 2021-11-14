@@ -255,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   corpsePrefab: {fileID: 6529309704958929736, guid: 948d53463bb3b4a489b80c06b79a8fce, type: 3}
   corpseContainer: {fileID: 0}
+  distanceToDie: 120
 --- !u!1 &2455964628299860120
 GameObject:
   m_ObjectHideFlags: 0

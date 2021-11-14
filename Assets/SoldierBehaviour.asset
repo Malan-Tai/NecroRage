@@ -508,9 +508,9 @@ MonoBehaviour:
   - {fileID: -9013317587357133099}
   - {fileID: -2386687386619875312}
   blackboard:
-    moveToPosition: {x: 6.349307, y: 0, z: -93.78526}
+    moveToPosition: {x: 37.56012, y: 0, z: 54.7239}
     closestEntity: {fileID: 0}
-    isAttacking: 0
+    isAttacking: 1
     eatenCorpse: {fileID: 0}
 --- !u!114 &87452677134612348
 MonoBehaviour:
