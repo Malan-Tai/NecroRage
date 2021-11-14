@@ -201,6 +201,10 @@ public class GameManager : MonoBehaviour
 
     public void TryVibration(float duration, float vibration)
     {
+#if UNITY_WEBGL
+        return;
+#endif
+
         PlayerIndex testPlayerIndex = 0;
         GamePadState testState = GamePad.GetState(testPlayerIndex);
         if (!testState.IsConnected) return;

@@ -96,9 +96,12 @@ public class NecrovorePlayer : MonoBehaviour
                 GameManager.Instance.TryVibration(_cameraShakeEatingDuration * 1.2f, 0.7f);
                 GameManager.Instance.SplashBloodOnScreen();
 
-                Vector3 bloodDirection = (_eatenCorpse.transform.position - this.transform.position);
-                bloodDirection.y = 0;
-                BloodParticleSystemHandler.Instance.SpawnBlood(this.transform.position, bloodDirection.normalized);
+                if (_eatenCorpse != null)
+                {
+                    Vector3 bloodDirection = (_eatenCorpse.transform.position - this.transform.position);
+                    bloodDirection.y = 0;
+                    BloodParticleSystemHandler.Instance.SpawnBlood(this.transform.position, bloodDirection.normalized);
+                }
                 SoundAssets.instance.playMunchSound(transform.position);
             }
             _currentCamShakeEatingTime -= Time.deltaTime;
@@ -214,9 +217,9 @@ public class NecrovorePlayer : MonoBehaviour
         if (Random.Range(0,3) == 0) SoundManager.PlaySound(SoundManager.Sound.Blurp, transform.position);
     }
 
-    public void StopEating()
+    public bool StopEating()
     {
-        if (_eatenCorpse == null) return;
+        if (_eatenCorpse == null) return false;
 
         _eatenCorpse.OnDeath -= FinishEating;
         _eatenCorpse.StopJoint();
@@ -229,6 +232,7 @@ public class NecrovorePlayer : MonoBehaviour
         _camera.ZoomOut();
         
         StartCoroutine(BurpAfterSeconds());
+        return true;
     }
 
     private void OnTriggerEnter(Collider other)
