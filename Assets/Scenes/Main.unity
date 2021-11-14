@@ -1774,10 +1774,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4602323599991004460, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
-      propertyPath: _hungerDrainRate
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4602323599991004461, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
       propertyPath: m_RootOrder
       value: 9
