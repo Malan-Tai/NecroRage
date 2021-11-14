@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
 
         if (pulsing)
         {
-            if (_pulsingSliderCoroutine == null) _pulsingSliderCoroutine = StartCoroutine(SliderShakeCoroutine(60f, 5f));
+            if (_pulsingSliderCoroutine == null) _pulsingSliderCoroutine = StartCoroutine(SliderShakeCoroutine(60f, 2f));
 
             _currentPulse += Time.deltaTime;
             if (_currentPulse >= _redVisionPulseTime * 0.6f)
