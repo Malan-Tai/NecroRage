@@ -21,6 +21,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject firstSlider;
 
 
+    public void Tuto()
+    {
+        SoundManager.PlaySound(SoundManager.Sound.Validation_menu);
+        SceneManager.LoadScene("Tuto");
+    }
+
     public void Play()
     {
         SoundManager.PlaySound(SoundManager.Sound.Validation_menu);

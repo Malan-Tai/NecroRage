@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Slider _hungerSlider;
     private float _hungerSliderBaseWidth;
+    [SerializeField]
+    private Image _hungerSliderBackground;
 
     [SerializeField]
     private Transform _bloodScreensParent;
@@ -53,7 +55,14 @@ public class GameManager : MonoBehaviour
     private float _redVisionPulseTime = 2f;
     private float _currentPulse = 0f;
 
+    [SerializeField]
+    private Image _redHitScreen;
+    private Color _hitScreenBaseColor;
+    [SerializeField]
+    private float _hitScreenFadeTime = 0.5f;
+
     public bool pulsing = false;
+    private Coroutine _pulsingSliderCoroutine = null;
 
     private void Start()
     {
@@ -61,14 +70,28 @@ public class GameManager : MonoBehaviour
         _bloodScreens = _bloodScreensParent.GetComponentsInChildren<Image>();
         _redVision = _redVisionParent.GetComponentsInChildren<Image>();
 
-        print(_redVisionPulseTime / 0.6f);
+        _hitScreenBaseColor = _redHitScreen.color;
+
+        Color color;
+        foreach (Image image in _redVision)
+        {
+            color = image.color;
+            color.a = 0f;
+            image.color = color;
+        }
+
+        color = _redHitScreen.color;
+        color.a = 0f;
+        _redHitScreen.color = color;
     }
 
     private void Update()
     {
+        Color color;
+
         foreach (Image image in _bloodScreens)
         {
-            Color color = image.color;
+            color = image.color;
             color.a -= _bloodScreenFadeSpeed * Time.deltaTime;
             if (color.a < 0f) color.a = 0f;
             image.color = color;
@@ -76,14 +99,21 @@ public class GameManager : MonoBehaviour
 
         foreach (Image image in _redVision)
         {
-            Color color = image.color;
+            color = image.color;
             color.a -= (1 / (_redVisionPulseTime * 0.6f)) * Time.deltaTime;
             if (color.a < 0f) color.a = 0f;
             image.color = color;
         }
 
+        color = _redHitScreen.color;
+        color.a -= (1 / (_hitScreenFadeTime)) * Time.deltaTime;
+        if (color.a < 0f) color.a = 0f;
+        _redHitScreen.color = color;
+
         if (pulsing)
         {
+            if (_pulsingSliderCoroutine == null) _pulsingSliderCoroutine = StartCoroutine(SliderShakeCoroutine(60f, 5f));
+
             _currentPulse += Time.deltaTime;
             if (_currentPulse >= _redVisionPulseTime * 0.6f)
             {
@@ -101,6 +131,11 @@ public class GameManager : MonoBehaviour
             {
                 _currentPulse = 0f;
             }
+        }
+        else if (_pulsingSliderCoroutine != null)
+        {
+            StopCoroutine(_pulsingSliderCoroutine);
+            _pulsingSliderCoroutine = null;
         }
     }
 
@@ -129,7 +164,7 @@ public class GameManager : MonoBehaviour
         {
             float theta = Random.Range(-1f, 1f) * magnitude;
 
-            _hungerSlider.transform.eulerAngles = new Vector3(0, 0, theta);
+            _hungerSlider.transform.parent.transform.eulerAngles = new Vector3(0, 0, theta);
 
             elapsed += Time.deltaTime;
 
@@ -148,13 +183,16 @@ public class GameManager : MonoBehaviour
     {
         RectTransform rect = _hungerSlider.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(newMaxRatio * _hungerSliderBaseWidth, rect.sizeDelta.y);
-        //rect.position = new Vector3((rect.sizeDelta.x - _hungerSliderBaseWidth) / 2f, 0, 0);
         rect.anchoredPosition3D = new Vector3((rect.sizeDelta.x - _hungerSliderBaseWidth) / 2f, 0, 0);
+
+        _hungerSliderBackground.rectTransform.sizeDelta = rect.sizeDelta;
+
+        _hungerSlider.SetValueWithoutNotify(currentRatio);
     }
 
     public void GameOver()
     {
-        _hungerSlider.gameObject.SetActive(false);
+        _hungerSlider.transform.parent.gameObject.SetActive(false);
         GetComponent<Defeat>().GameOver((int)(_timeScore + _eatenScore + _fullBellyScore));
     }
 
@@ -204,5 +242,10 @@ public class GameManager : MonoBehaviour
         else scaleY = -1;
 
         _bloodScreens[i].transform.localScale = new Vector3(scaleX, scaleY, 1);
+    }
+
+    public void HitScreen()
+    {
+        _redHitScreen.color = _hitScreenBaseColor;
     }
 }

@@ -104,6 +104,7 @@ public class Boulder : MonoBehaviour
                 _bodySprite.sprite = _landedSprite;
                 _bodySprite.sortingOrder--;
                 _shadow.gameObject.SetActive(false);
+                SoundManager.PlaySound(SoundManager.Sound.Rock_explode1);
 
                 if (OnLand != null) OnLand();
             }
