@@ -70,7 +70,7 @@ public class NecrovorePlayer : MonoBehaviour
         this.transform.position += _velocity * Time.deltaTime;
         //this.transform.Translate(_velocity * Time.deltaTime);
 
-        _camera.SetTargetPosition(this.transform.position + _velocity.normalized * 2f + new Vector3(0, 10, 0));
+        _camera.SetTargetPosition(this.transform.position + _velocity.normalized * 4f + new Vector3(0, 10, 0));
 
         _currentDashTime += Time.deltaTime;
         if (_dashing && _currentDashTime >= _dashDuration)
