@@ -118,7 +118,12 @@ public class NecrovorePlayer : MonoBehaviour
             gameObject.SetActive(false);
             GameManager.Instance.GameOver();
         }
-        else GameManager.Instance.UpdateScore(Time.deltaTime, dmg, fullBelly);
+        else
+        {
+            GameManager.Instance.UpdateScore(Time.deltaTime, dmg, fullBelly);
+
+            GameManager.Instance.pulsing = _hunger <= _baseMaxHunger * 0.25f;
+        }
     }
 
     public void Dash()

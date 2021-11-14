@@ -46,11 +46,22 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float _bloodScreenFadeSpeed = 1f;
 
+    [SerializeField]
+    private Transform _redVisionParent;
+    private Image[] _redVision;
+    [SerializeField]
+    private float _redVisionPulseTime = 2f;
+    private float _currentPulse = 0f;
+
+    public bool pulsing = false;
+
     private void Start()
     {
         _hungerSliderBaseWidth = _hungerSlider.GetComponent<RectTransform>().rect.width;
         _bloodScreens = _bloodScreensParent.GetComponentsInChildren<Image>();
-        print(_bloodScreens.Length);
+        _redVision = _redVisionParent.GetComponentsInChildren<Image>();
+
+        print(_redVisionPulseTime / 0.6f);
     }
 
     private void Update()
@@ -61,6 +72,35 @@ public class GameManager : MonoBehaviour
             color.a -= _bloodScreenFadeSpeed * Time.deltaTime;
             if (color.a < 0f) color.a = 0f;
             image.color = color;
+        }
+
+        foreach (Image image in _redVision)
+        {
+            Color color = image.color;
+            color.a -= (1 / (_redVisionPulseTime * 0.6f)) * Time.deltaTime;
+            if (color.a < 0f) color.a = 0f;
+            image.color = color;
+        }
+
+        if (pulsing)
+        {
+            _currentPulse += Time.deltaTime;
+            if (_currentPulse >= _redVisionPulseTime * 0.6f)
+            {
+                Color c = _redVision[1].color;
+                c.a = 1;
+                _redVision[1].color = c;
+            }
+            if (_currentPulse >= _redVisionPulseTime * 0.8f)
+            {
+                Color c = _redVision[1].color;
+                c.a = 1;
+                _redVision[0].color = c;
+            }
+            if (_currentPulse >= _redVisionPulseTime)
+            {
+                _currentPulse = 0f;
+            }
         }
     }
 
