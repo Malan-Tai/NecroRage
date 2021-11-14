@@ -16,14 +16,14 @@ public class RangeSensor : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         bool mustHad = false;
-        if (col.CompareTag("BlueSoldier") || col.CompareTag("RedSoldier"))
+        if (col.CompareTag("RedSoldier") && isBlue)
         {
-            if (col.CompareTag("BlueSoldier") != isBlue)
-            {
-                mustHad = true;
-            }
+            mustHad = true;
         }
-
+        if (col.CompareTag("BlueSoldier") && !isBlue)
+        {
+            mustHad = true;
+        }
         if (col.CompareTag("Necrophage") || col.CompareTag("Player"))
         {
             mustHad = true;
@@ -37,7 +37,7 @@ public class RangeSensor : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-        if (col.CompareTag("BlueSoldier") || col.CompareTag("RedSoldier"))
+        /* if (col.CompareTag("BlueSoldier") || col.CompareTag("RedSoldier"))
         {
             if (col.CompareTag("BlueSoldier") != isBlue)
             {
@@ -48,7 +48,8 @@ public class RangeSensor : MonoBehaviour
         if (col.CompareTag("Necrophage") || col.CompareTag("Player"))
         {
             detectedCharacters.Remove(col.gameObject);
-        }
+        } */
+        detectedCharacters.Remove(col.gameObject);
     }
 
 

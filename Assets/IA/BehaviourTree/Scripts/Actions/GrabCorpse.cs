@@ -13,7 +13,7 @@ public class GrabCorpse : ActionNode
 
     protected override State OnUpdate() {
         GameObject tmp = context.necrovoreSensor.GetNearestCorpse();
-        if (blackboard.eatenCorpse == null) return State.Failure;
+        if (tmp == null) return State.Failure;
         blackboard.eatenCorpse = tmp.GetComponent<Corpse>();
         blackboard.eatenCorpse.StartJoint(context.physics);
     

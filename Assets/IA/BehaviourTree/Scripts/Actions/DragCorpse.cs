@@ -12,6 +12,8 @@ public class DragCorpse : ActionNode
     public float acceleration = 40.0f;
     public float tolerance = 1.0f;
 
+    private float cumulatedDamages = 0f;
+
     protected override void OnStart() {
         context.agent.stoppingDistance = stoppingDistance;
         context.agent.speed = speed;
@@ -29,15 +31,25 @@ public class DragCorpse : ActionNode
             return State.Failure;
         }
 
-        blackboard.eatenCorpse.TakeDamage(eatingDamages * Time.deltaTime);
-        //context.transform.Find("necrovore sprite").LookAt(blackboard.eatenCorpse.transform.position);
-        context.transform.rotation = Quaternion.LookRotation(-context.agent.velocity, Vector3.up);
+        float dmg = blackboard.eatenCorpse.TakeDamage(eatingDamages * Time.deltaTime);
+        cumulatedDamages += dmg;
+        if (cumulatedDamages >= 15f)
+        {
+            cumulatedDamages -= 15f;
+            SoundAssets.instance.playMunchSound(context.transform.position);
+        }
+
+        context.transform.rotation = Quaternion.LookRotation(-context.agent.velocity.normalized, Vector3.up);
 
         if (blackboard.eatenCorpse.gameObject.activeInHierarchy == false)
         {
             blackboard.eatenCorpse.StopJoint();
             blackboard.eatenCorpse = null;
             context.necrovoreSensor.RefreshEntities();
+            if (Random.Range(0,3) == 0)
+            {
+                SoundManager.PlaySound(SoundManager.Sound.Blurp, context.transform.position,0.8f);
+            }
             return State.Failure;
         }
 
@@ -54,4 +66,5 @@ public class DragCorpse : ActionNode
         }
         return State.Running;
     }
+
 }

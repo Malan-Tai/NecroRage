@@ -7,10 +7,28 @@ public class WarriorDeath : MonoBehaviour
     [SerializeField] private Corpse corpsePrefab;
     [SerializeField] private Transform corpseContainer;
 
+    [SerializeField] private float distanceToDie = 50f;
+
 
     public void Start()
     {
         corpseContainer = GameObject.Find("CorpseContainer").transform;
+    }
+
+    
+    void Update()
+    {
+        if (Vector3.Distance(transform.position, GameManager.Instance._player.transform.position) >= distanceToDie)
+        {
+            if (gameObject.CompareTag("RedSoldier"))
+            {
+                WarriorFactory.instance.redWarriorDied(this.gameObject);
+            }
+            else
+            {
+                WarriorFactory.instance.blueWarriorDied(this.gameObject);
+            }
+        }
     }
 
     public void Die()
@@ -20,10 +38,12 @@ public class WarriorDeath : MonoBehaviour
 
         if (gameObject.CompareTag("RedSoldier"))
         {
+            SoundManager.PlaySound(SoundManager.Sound.Death_soldier1,transform.position);
             WarriorFactory.instance.redWarriorDied(this.gameObject);
         }
         else
         {
+            SoundManager.PlaySound(SoundManager.Sound.Death_soldier2,transform.position);
             WarriorFactory.instance.blueWarriorDied(this.gameObject);
         }
 

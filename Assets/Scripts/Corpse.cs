@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Corpse : MonoBehaviour
 {
+    public static int corpseCounter;
+
     [SerializeField]
     private float _hp;
 
@@ -14,6 +16,7 @@ public class Corpse : MonoBehaviour
 
     private void Start()
     {
+        corpseCounter++;
         _joint = GetComponent<Joint>();
     }
 
@@ -24,8 +27,8 @@ public class Corpse : MonoBehaviour
         if (_hp <= 0)
         {
             if (OnDeath != null) OnDeath();
-
             //Destroy(gameObject);
+            corpseCounter--;
             this.gameObject.SetActive(false);
         }
         return actuallyTaken;
@@ -41,4 +44,6 @@ public class Corpse : MonoBehaviour
     {
         _joint.connectedBody = null;
     }
+
+    
 }

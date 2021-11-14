@@ -981,7 +981,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &400824877
 GameObject:
@@ -1412,7 +1412,7 @@ RectTransform:
   - {fileID: 1770292670}
   - {fileID: 1823214450}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1435,6 +1435,8 @@ MonoBehaviour:
   menuScene: Matthieu
   options: {fileID: 0}
   main: {fileID: 0}
+  playButton: {fileID: 0}
+  firstSlider: {fileID: 0}
 --- !u!1 &649860275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,7 +1539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4602323599991004460, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
       propertyPath: _speed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4602323599991004460, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
       propertyPath: _dashDuration
@@ -1553,7 +1555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4602323599991004461, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4602323599991004461, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1602,6 +1604,10 @@ PrefabInstance:
     - target: {fileID: 4602323599991004463, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602323599991004463, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
+      propertyPath: m_TagString
+      value: Necrophage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
@@ -2027,7 +2033,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1063101301
 MonoBehaviour:
@@ -2374,6 +2380,71 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1132646963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1132646966}
+  - component: {fileID: 1132646965}
+  - component: {fileID: 1132646964}
+  m_Layer: 0
+  m_Name: NecrovoreSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1132646964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132646963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7d66f0e46bc2947a8dfa3c0aaded72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnZoneWidth: 200
+  spawnZoneHeight: 200
+  startSpawnThreshold: 15
+  spawnAwayFromPlayer: 20
+  spawnBurstRadius: 10
+  maxNumberSpawnedAtOnce: 2
+--- !u!114 &1132646965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132646963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fb63f154adafb143bc8671a0ba09820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  necrovoreCounter: 0
+  necrovorePrefab: {fileID: 5422287518218074933, guid: c764912e676fd9c4380eb3bc8d7f81a3, type: 3}
+  necrovoreContainer: {fileID: 1484660550}
+--- !u!4 &1132646966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132646963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1140691619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,7 +2554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1232812374
 GameObject:
@@ -2659,6 +2730,106 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326601932}
   m_CullTransparentMesh: 1
+--- !u!1 &1332785079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1332785081}
+  - component: {fileID: 1332785080}
+  m_Layer: 0
+  m_Name: SoundAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1332785080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332785079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633df89e414137045a56897e37950af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundAudioClipsArray:
+  - sound: 0
+    audioClip: {fileID: 8300000, guid: ee35bde377755f3408ae2bd32e77bc3e, type: 3}
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: 47b2b360c06729a4d99e85e93ce6feaf, type: 3}
+  - sound: 2
+    audioClip: {fileID: 8300000, guid: 0c2a5933b56260748a2fe2a3bb380ea2, type: 3}
+  - sound: 3
+    audioClip: {fileID: 8300000, guid: 9dc56f7b6d4785d49a6f0480e44f9564, type: 3}
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: adc47bcd62fee934cad4532581eec7a1, type: 3}
+  - sound: 5
+    audioClip: {fileID: 8300000, guid: a07b01ad26becac47814a15408c14c34, type: 3}
+  - sound: 6
+    audioClip: {fileID: 8300000, guid: 932f7ea418cdab64fbfd1e26878e705b, type: 3}
+  - sound: 7
+    audioClip: {fileID: 8300000, guid: 82a0189ffaa7df44d9ff6f2d092c495f, type: 3}
+  - sound: 8
+    audioClip: {fileID: 8300000, guid: 865b49c59a1ce304399aef88196d415d, type: 3}
+  - sound: 10
+    audioClip: {fileID: 8300000, guid: 3b01d82f0d3cd3a47b9a1e9aa01cd827, type: 3}
+  - sound: 11
+    audioClip: {fileID: 8300000, guid: 36f68022dc58e2147aef12e03650994a, type: 3}
+  - sound: 12
+    audioClip: {fileID: 8300000, guid: 7bd752d85b0b1b6448f386fd3f2d3374, type: 3}
+  - sound: 15
+    audioClip: {fileID: 8300000, guid: e90099d7af751d1448c8020542842459, type: 3}
+  - sound: 16
+    audioClip: {fileID: 8300000, guid: 58e6479265740d349957c6fa9034549e, type: 3}
+  - sound: 17
+    audioClip: {fileID: 8300000, guid: e77a607f21ae9f241bcf05b0e142cbfb, type: 3}
+  - sound: 18
+    audioClip: {fileID: 8300000, guid: f4e2b165914d6544ea3f3d629a16ecee, type: 3}
+  - sound: 19
+    audioClip: {fileID: 8300000, guid: 0b9f2a78da2dbaf4384a2529db811acf, type: 3}
+  - sound: 20
+    audioClip: {fileID: 8300000, guid: d3bbb28f71c2e5145a0f6add2786c4da, type: 3}
+  - sound: 21
+    audioClip: {fileID: 8300000, guid: 0b470d9e343c8e843b5d2e9f6c8a7645, type: 3}
+  - sound: 22
+    audioClip: {fileID: 8300000, guid: 98dcc52211d7c614daa8d68286309a5b, type: 3}
+  - sound: 23
+    audioClip: {fileID: 8300000, guid: bcdc2b36993ce454a852d82bafabb585, type: 3}
+  - sound: 24
+    audioClip: {fileID: 8300000, guid: bd4e43f9e21bf69429a4de4f1e09ba9d, type: 3}
+  - sound: 9
+    audioClip: {fileID: 8300000, guid: a4e5a11cc18566545a31a348d330dfb9, type: 3}
+  mainMusic: {fileID: 0}
+  musicVolumeModifier: 0.35
+  ambiantVolumeModifier: 0.2
+  sfxVolumeModifier: 0.5
+  mainMusicVolume: 1
+  mainAmbiantVolume: 1
+  mainSFXVolume: 1
+  musicSlide: {fileID: 0}
+  ambiantSlide: {fileID: 0}
+  sfxSlide: {fileID: 0}
+--- !u!4 &1332785081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332785079}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1337364027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,7 +2923,7 @@ RectTransform:
   m_Children:
   - {fileID: 470683301}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2941,7 +3112,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1529115480
 GameObject:
@@ -3006,8 +3177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnZoneWidth: 200
   spawnZoneHeight: 200
-  startSpawnThreshold: 20
-  spawnAwayFromPlayer: 15
+  startSpawnThreshold: 30
+  spawnAwayFromPlayer: 20
   spawnBurstRadius: 10
 --- !u!114 &1559476178 stripped
 MonoBehaviour:
@@ -4071,7 +4242,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1960470180
 GameObject:
@@ -4179,7 +4350,7 @@ Transform:
   - {fileID: 143857340}
   - {fileID: 1097177867}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2031119833
 GameObject:
@@ -4278,49 +4449,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2055332031
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2055332033}
-  - component: {fileID: 2055332032}
-  m_Layer: 0
-  m_Name: NecrovoreSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2055332032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055332031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fb63f154adafb143bc8671a0ba09820, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  necrovoreCounter: 0
-  necrovorePrefab: {fileID: 8448032693107075941, guid: c764912e676fd9c4380eb3bc8d7f81a3, type: 3}
-  necrovoreContainer: {fileID: 1484660550}
---- !u!4 &2055332033
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055332031}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -5,7 +5,7 @@ using BehaviourTreeAI;
 
 public class SetAttacking : ActionNode
 {
-    public bool valueToSet = true;
+    public bool valueToSet;
 
     protected override void OnStart() {
     }
