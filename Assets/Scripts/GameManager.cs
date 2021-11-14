@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Slider _hungerSlider;
     private float _hungerSliderBaseWidth;
+    [SerializeField]
+    private Image _hungerSliderBackground;
 
     [SerializeField]
     private Transform _bloodScreensParent;
@@ -129,7 +131,7 @@ public class GameManager : MonoBehaviour
         {
             float theta = Random.Range(-1f, 1f) * magnitude;
 
-            _hungerSlider.transform.eulerAngles = new Vector3(0, 0, theta);
+            _hungerSlider.transform.parent.transform.eulerAngles = new Vector3(0, 0, theta);
 
             elapsed += Time.deltaTime;
 
@@ -148,8 +150,11 @@ public class GameManager : MonoBehaviour
     {
         RectTransform rect = _hungerSlider.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(newMaxRatio * _hungerSliderBaseWidth, rect.sizeDelta.y);
-        //rect.position = new Vector3((rect.sizeDelta.x - _hungerSliderBaseWidth) / 2f, 0, 0);
         rect.anchoredPosition3D = new Vector3((rect.sizeDelta.x - _hungerSliderBaseWidth) / 2f, 0, 0);
+
+        _hungerSliderBackground.rectTransform.sizeDelta = rect.sizeDelta;
+
+        _hungerSlider.SetValueWithoutNotify(currentRatio);
     }
 
     public void GameOver()
