@@ -88,21 +88,7 @@ public class NecrovorePlayer : MonoBehaviour
 
             if (_currentCamShakeEatingTime <= 0f)
             {
-                StartCoroutine(_camera.Shake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude));
-                _currentCamShakeEatingTime = _cameraShakeEatingInterval;
-                _hunger += _eatenHunger;
-                _eatenHunger = 0f;
-                GameManager.Instance.SliderShake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude * 4f);
-                GameManager.Instance.TryVibration(_cameraShakeEatingDuration * 1.2f, 0.7f);
-                GameManager.Instance.SplashBloodOnScreen();
-
-                if (_eatenCorpse != null)
-                {
-                    Vector3 bloodDirection = (_eatenCorpse.transform.position - this.transform.position);
-                    bloodDirection.y = 0;
-                    BloodParticleSystemHandler.Instance.SpawnBlood(this.transform.position, bloodDirection.normalized);
-                }
-                SoundAssets.instance.playMunchSound(transform.position);
+                EatFeedabck();
             }
             _currentCamShakeEatingTime -= Time.deltaTime;
         }
@@ -137,6 +123,25 @@ public class NecrovorePlayer : MonoBehaviour
         {
             SoundAssets.instance.PlayFootstep(true);
         }
+    }
+
+    public void EatFeedabck()
+    {
+        StartCoroutine(_camera.Shake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude));
+        _currentCamShakeEatingTime = _cameraShakeEatingInterval;
+        _hunger += _eatenHunger;
+        _eatenHunger = 0f;
+        GameManager.Instance.SliderShake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude * 4f);
+        GameManager.Instance.TryVibration(_cameraShakeEatingDuration * 1.2f, 0.7f);
+        GameManager.Instance.SplashBloodOnScreen();
+
+        if (_eatenCorpse != null)
+        {
+            Vector3 bloodDirection = (_eatenCorpse.transform.position - this.transform.position);
+            bloodDirection.y = 0;
+            BloodParticleSystemHandler.Instance.SpawnBlood(this.transform.position, bloodDirection.normalized);
+        }
+        SoundAssets.instance.playMunchSound(transform.position);
     }
 
     public void Dash()
@@ -207,6 +212,7 @@ public class NecrovorePlayer : MonoBehaviour
     public void FinishEating()
     {
         if (_eatenCorpse == null) return;
+        EatFeedabck();
         _corpses.Remove(_eatenCorpse);
         StopEating();
     }

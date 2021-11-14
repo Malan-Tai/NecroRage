@@ -22,6 +22,9 @@ public class BloodParticleSystemHandler : MonoBehaviour
     private MeshParticleSystem meshParticleSystem;
     private List<Single> singleList;
 
+    private const float COOLDOWN = 0.5f;
+    private float cooldown = COOLDOWN;
+
     private void Awake()
     {
         Instance = this;
@@ -31,6 +34,7 @@ public class BloodParticleSystemHandler : MonoBehaviour
 
     private void Update()
     {
+        cooldown += Time.deltaTime;
         for (int i = 0; i < singleList.Count; i++)
         {
             Single single = singleList[i];
@@ -45,7 +49,10 @@ public class BloodParticleSystemHandler : MonoBehaviour
 
     public void SpawnBlood(Vector3 position, Vector3 direction)
     {
-        float bloodParticleCount = 3;
+        if (cooldown < COOLDOWN) return;
+
+        cooldown = 0f;
+        float bloodParticleCount = Random.Range(3, 7);
         for (int i = 0; i < bloodParticleCount; i++)
         {
             // code monkey's code
@@ -53,7 +60,7 @@ public class BloodParticleSystemHandler : MonoBehaviour
 
             // my code
             Vector3 particlePos = new Vector3(position.x, position.z, position.y);
-            singleList.Add(new Single(particlePos, Quaternion.Euler(0f, 0f, Random.Range(-15f, 15f)) * direction, meshParticleSystem));
+            singleList.Add(new Single(particlePos, Quaternion.Euler(0f, 0f, Random.Range(-90f, 90f)) * direction, meshParticleSystem));
         }
     }
 
