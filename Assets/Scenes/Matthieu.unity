@@ -1909,7 +1909,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 4cc21b48532f91a44885ad869a4f5bae, type: 3}
   mainMusic: {fileID: 8300000, guid: 72b592b6ec59b17499812dcc644ad9ea, type: 3}
   ambiantMusic: {fileID: 8300000, guid: e95e0fa28f69fd941bf88b908aeb3bf0, type: 3}
-  musicVolumeModifier: 0.1
+  musicVolumeModifier: 0.2
   ambiantVolumeModifier: 0.15
   sfxVolumeModifier: 0.5
   mainMusicVolume: 1

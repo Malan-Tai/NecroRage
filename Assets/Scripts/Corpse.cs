@@ -44,6 +44,14 @@ public class Corpse : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (_joint != null)
+        {
+            TakeDamage(2f * Time.deltaTime);
+        }
+    }
+
     public void SetUsedSprites(CorpseSprites sprite)
     {
         _joint = GetComponent<Joint>();

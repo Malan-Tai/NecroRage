@@ -2772,7 +2772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnZoneWidth: 200
   spawnZoneHeight: 200
-  startSpawnThreshold: 15
+  startSpawnThreshold: 5
   spawnAwayFromPlayer: 20
   spawnBurstRadius: 10
   maxNumberSpawnedAtOnce: 2
