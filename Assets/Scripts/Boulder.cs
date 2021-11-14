@@ -60,7 +60,7 @@ public class Boulder : MonoBehaviour
         _fallTime += relativeFallTimeChange * _fallTime;
         _rotateSpeed += relativeFallTimeChange * _rotateSpeed;
         _shadowScale = 0f;
-        _bodyScale = 10f;
+        _bodyScale = 3f;
         _activeCrusherFrames = 0;
         _listeningToCrush = true;
 
