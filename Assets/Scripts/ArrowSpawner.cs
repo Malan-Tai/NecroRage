@@ -36,7 +36,7 @@ public class ArrowSpawner : MonoBehaviour
 
         _currentThreshold += ((maxSpawnThreshold - minSpawnThreshold) / timeToMaxThreshold) * Time.deltaTime;
         startSpawnThreshold = Mathf.FloorToInt(_currentThreshold);
-        print(startSpawnThreshold);
+        //print(startSpawnThreshold);
 
         if (arrowCount <= startSpawnThreshold)
         {

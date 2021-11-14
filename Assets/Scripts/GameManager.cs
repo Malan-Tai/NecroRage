@@ -194,7 +194,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        SoundAssets.instance.StopMusicWithFade(0.5f);
+        SoundAssets.instance.NTM();
         _hungerSlider.transform.parent.gameObject.SetActive(false);
         GetComponent<Defeat>().GameOver((int)(_timeScore + _eatenScore + _fullBellyScore));
     }

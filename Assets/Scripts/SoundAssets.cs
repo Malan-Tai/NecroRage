@@ -185,20 +185,22 @@ public class SoundAssets : MonoBehaviour
         }
         
     }
-
+    public void NTM()
+    {
+        StartCoroutine(StopMusicWithFade(1f));
+    }
     
     public IEnumerator StopMusicWithFade(float transitionTime = 1.0f) {
 
-        AudioSource activeSource = musicSource;
         float t = 0f;
 
         for (t= 0f; t<= transitionTime; t+=Time.deltaTime)
         {
-            activeSource.volume = (1-(t/transitionTime)) * mainMusicVolume * musicVolumeModifier;
+            musicSource.volume = (1-(t/transitionTime)) * mainMusicVolume * musicVolumeModifier;
             yield return null;
         }
         
-        activeSource.Stop();
+        musicSource.Stop();
     }
 
     public void PlayAmbiantWithFade(float transitionTime = 1.0f)
