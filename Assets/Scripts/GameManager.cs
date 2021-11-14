@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XInputDotNetPure;
 
 public class GameManager : MonoBehaviour
 {
@@ -96,5 +97,28 @@ public class GameManager : MonoBehaviour
     {
         _hungerSlider.gameObject.SetActive(false);
         GetComponent<Defeat>().GameOver((int)(_timeScore + _eatenScore + _fullBellyScore));
+    }
+
+    public void TryVibration(float duration, float vibration)
+    {
+        PlayerIndex testPlayerIndex = 0;
+        GamePadState testState = GamePad.GetState(testPlayerIndex);
+        if (!testState.IsConnected) return;
+
+        GamePad.SetVibration(testPlayerIndex, vibration, vibration);
+        StartCoroutine(Vibrate(duration));
+    }
+    private IEnumerator Vibrate(float duration)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        GamePad.SetVibration(0, 0, 0);
     }
 }

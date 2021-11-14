@@ -92,6 +92,7 @@ public class NecrovorePlayer : MonoBehaviour
                 _hunger += _eatenHunger;
                 _eatenHunger = 0f;
                 GameManager.Instance.SliderShake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude * 4f);
+                GameManager.Instance.TryVibration(_cameraShakeEatingDuration * 1.2f, 0.7f);
 
                 Vector3 bloodDirection = (_eatenCorpse.transform.position - this.transform.position);
                 bloodDirection.y = 0;
@@ -190,6 +191,7 @@ public class NecrovorePlayer : MonoBehaviour
         _corpses.Remove(_eatenCorpse);
         StopEating();
     }
+
     public IEnumerator BurpAfterSeconds()
     {
         yield return new WaitForSeconds(Random.Range(0.5f,1.5f));

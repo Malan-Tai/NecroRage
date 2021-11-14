@@ -1346,8 +1346,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnradius: 15
-  startSpawnThreshold: 1
-  _playerTransform: {fileID: 0}
+  startSpawnThreshold: 2
+  _playerTransform: {fileID: 715572830}
   _boulderPrefab: {fileID: 2236620169071250064, guid: 4819ae55d8db9b9479e84c8ff64bfbbf, type: 3}
 --- !u!4 &592222715
 Transform:
