@@ -55,6 +55,12 @@ public class GameManager : MonoBehaviour
     private float _redVisionPulseTime = 2f;
     private float _currentPulse = 0f;
 
+    [SerializeField]
+    private Image _redHitScreen;
+    private Color _hitScreenBaseColor;
+    [SerializeField]
+    private float _hitScreenFadeTime = 0.5f;
+
     public bool pulsing = false;
     private Coroutine _pulsingSliderCoroutine = null;
 
@@ -64,14 +70,28 @@ public class GameManager : MonoBehaviour
         _bloodScreens = _bloodScreensParent.GetComponentsInChildren<Image>();
         _redVision = _redVisionParent.GetComponentsInChildren<Image>();
 
-        print(_redVisionPulseTime / 0.6f);
+        _hitScreenBaseColor = _redHitScreen.color;
+
+        Color color;
+        foreach (Image image in _redVision)
+        {
+            color = image.color;
+            color.a = 0f;
+            image.color = color;
+        }
+
+        color = _redHitScreen.color;
+        color.a = 0f;
+        _redHitScreen.color = color;
     }
 
     private void Update()
     {
+        Color color;
+
         foreach (Image image in _bloodScreens)
         {
-            Color color = image.color;
+            color = image.color;
             color.a -= _bloodScreenFadeSpeed * Time.deltaTime;
             if (color.a < 0f) color.a = 0f;
             image.color = color;
@@ -79,11 +99,16 @@ public class GameManager : MonoBehaviour
 
         foreach (Image image in _redVision)
         {
-            Color color = image.color;
+            color = image.color;
             color.a -= (1 / (_redVisionPulseTime * 0.6f)) * Time.deltaTime;
             if (color.a < 0f) color.a = 0f;
             image.color = color;
         }
+
+        color = _redHitScreen.color;
+        color.a -= (1 / (_hitScreenFadeTime)) * Time.deltaTime;
+        if (color.a < 0f) color.a = 0f;
+        _redHitScreen.color = color;
 
         if (pulsing)
         {
@@ -217,5 +242,10 @@ public class GameManager : MonoBehaviour
         else scaleY = -1;
 
         _bloodScreens[i].transform.localScale = new Vector3(scaleX, scaleY, 1);
+    }
+
+    public void HitScreen()
+    {
+        _redHitScreen.color = _hitScreenBaseColor;
     }
 }

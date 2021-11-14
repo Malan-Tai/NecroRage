@@ -253,5 +253,6 @@ public class NecrovorePlayer : MonoBehaviour
         GameManager.Instance.ShortenSlider(_maxHunger / _baseMaxHunger, _hunger / _maxHunger);
         print("oof");
         SoundManager.PlaySound(SoundManager.Sound.Damage_necrovore);
+        GameManager.Instance.HitScreen();
     }
 }
