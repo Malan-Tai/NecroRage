@@ -17,6 +17,7 @@ public class SoundAssets : MonoBehaviour
 
 
     public AudioClip mainMusic;
+    public AudioClip ambiantMusic;
     private AudioSource musicSource;
     private AudioSource musicSource2;
     private AudioSource ambiantSource;
@@ -65,7 +66,7 @@ public class SoundAssets : MonoBehaviour
         mainAmbiantVolume = 0.5f;
         mainSFXVolume = 0.5f;
         
-        PlayMusicWithFade(mainMusic,3f);
+        
         SoundManager.soundTimerDictionary = new Dictionary<SoundManager.Sound, float>();
         SoundManager.soundTimerDictionary.Add(SoundManager.Sound.Movement_menu,0f);
 
@@ -185,9 +186,10 @@ public class SoundAssets : MonoBehaviour
         
     }
 
+    
     public IEnumerator StopMusicWithFade(float transitionTime = 1.0f) {
 
-        AudioSource activeSource = (firstSourcePlaying) ? musicSource : musicSource2;
+        AudioSource activeSource = musicSource;
         float t = 0f;
 
         for (t= 0f; t<= transitionTime; t+=Time.deltaTime)
@@ -197,6 +199,15 @@ public class SoundAssets : MonoBehaviour
         }
 
         activeSource.Stop();
+    }
+
+    public void PlayAmbiantWithFade(float transitionTime = 1.0f)
+    {
+        if (!ambiantSource.isPlaying)
+        {
+            StartCoroutine(UpdateMusicWithFade(ambiantSource,ambiantMusic,transitionTime));
+        }
+        
     }
 
     public IEnumerator StopAmbiantWithFade(float transitionTime = 1.0f) {
@@ -248,6 +259,7 @@ public class SoundAssets : MonoBehaviour
             yield return null;
         }
     }
+
     private IEnumerator UpdateMusicWithCrossFade(AudioSource original, AudioSource newSource, float transitionTime)
     {
         float t = 0f;

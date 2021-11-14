@@ -1907,9 +1907,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 37b61ce286b612e4bb571007654184f6, type: 3}
   - sound: 37
     audioClip: {fileID: 8300000, guid: 4cc21b48532f91a44885ad869a4f5bae, type: 3}
-  mainMusic: {fileID: 0}
-  musicVolumeModifier: 0.35
-  ambiantVolumeModifier: 0.2
+  mainMusic: {fileID: 8300000, guid: 72b592b6ec59b17499812dcc644ad9ea, type: 3}
+  ambiantMusic: {fileID: 8300000, guid: e95e0fa28f69fd941bf88b908aeb3bf0, type: 3}
+  musicVolumeModifier: 0.1
+  ambiantVolumeModifier: 0.15
   sfxVolumeModifier: 0.5
   mainMusicVolume: 1
   mainAmbiantVolume: 1
@@ -1917,6 +1918,7 @@ MonoBehaviour:
   musicSlide: {fileID: 236049617}
   ambiantSlide: {fileID: 431021916}
   sfxSlide: {fileID: 1306953535}
+  canPlayStep: 1
   stepFrequency: 0.2
 --- !u!4 &647630483
 Transform:
