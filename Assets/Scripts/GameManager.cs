@@ -40,9 +40,28 @@ public class GameManager : MonoBehaviour
     private Slider _hungerSlider;
     private float _hungerSliderBaseWidth;
 
+    [SerializeField]
+    private Transform _bloodScreensParent;
+    private Image[] _bloodScreens;
+    [SerializeField]
+    private float _bloodScreenFadeSpeed = 1f;
+
     private void Start()
     {
         _hungerSliderBaseWidth = _hungerSlider.GetComponent<RectTransform>().rect.width;
+        _bloodScreens = _bloodScreensParent.GetComponentsInChildren<Image>();
+        print(_bloodScreens.Length);
+    }
+
+    private void Update()
+    {
+        foreach (Image image in _bloodScreens)
+        {
+            Color color = image.color;
+            color.a -= _bloodScreenFadeSpeed * Time.deltaTime;
+            if (color.a < 0f) color.a = 0f;
+            image.color = color;
+        }
     }
 
     public void UpdateScore(float deltaTime, float eatenDamage, float fullBelly)
@@ -108,6 +127,7 @@ public class GameManager : MonoBehaviour
         GamePad.SetVibration(testPlayerIndex, vibration, vibration);
         StartCoroutine(Vibrate(duration));
     }
+
     private IEnumerator Vibrate(float duration)
     {
         float elapsed = 0f;
@@ -120,5 +140,29 @@ public class GameManager : MonoBehaviour
         }
 
         GamePad.SetVibration(0, 0, 0);
+    }
+
+    public void SplashBloodOnScreen()
+    {
+        int n = _bloodScreens.Length;
+        int i = Random.Range(0, n);
+
+        while (_bloodScreens[i].color.a > 0f)
+        {
+            i++;
+            if (i >= n - 1) i = 0;
+            if (i < 0) i = n - 1;
+        }
+
+        _bloodScreens[i].color = Color.white;
+
+        int scaleX = Random.Range(-2, 2);
+        if (scaleX >= 0) scaleX = 1;
+        else scaleX = -1;
+        int scaleY = Random.Range(-2, 2);
+        if (scaleY >= 0) scaleY = 1;
+        else scaleY = -1;
+
+        _bloodScreens[i].transform.localScale = new Vector3(scaleX, scaleY, 1);
     }
 }

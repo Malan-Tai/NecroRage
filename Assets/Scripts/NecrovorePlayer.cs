@@ -93,6 +93,7 @@ public class NecrovorePlayer : MonoBehaviour
                 _eatenHunger = 0f;
                 GameManager.Instance.SliderShake(_cameraShakeEatingDuration, _cameraShakeEatingMagnitude * 4f);
                 GameManager.Instance.TryVibration(_cameraShakeEatingDuration * 1.2f, 0.7f);
+                GameManager.Instance.SplashBloodOnScreen();
 
                 Vector3 bloodDirection = (_eatenCorpse.transform.position - this.transform.position);
                 bloodDirection.y = 0;
