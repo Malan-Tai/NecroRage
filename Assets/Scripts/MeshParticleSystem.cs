@@ -18,7 +18,7 @@ using UnityEngine;
 
 public class MeshParticleSystem : MonoBehaviour
 {
-    private const int MAX_QUAD_AMOUNT = 15000;
+    private const int MAX_QUAD_AMOUNT = 150;
 
     // Set in the Editor using Pixel Values
     [System.Serializable]
