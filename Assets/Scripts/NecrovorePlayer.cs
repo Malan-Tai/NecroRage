@@ -212,7 +212,7 @@ public class NecrovorePlayer : MonoBehaviour
     public void FinishEating()
     {
         if (_eatenCorpse == null) return;
-        EatFeedabck();
+        //EatFeedabck();
         _corpses.Remove(_eatenCorpse);
         StopEating();
     }
