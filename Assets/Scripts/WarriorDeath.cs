@@ -33,18 +33,22 @@ public class WarriorDeath : MonoBehaviour
 
     public void Die()
     {
-        Corpse newCorpse = Instantiate(corpsePrefab,transform.position,Quaternion.Euler(90f,0f,0f));
-        newCorpse.transform.SetParent(corpseContainer);
+    //    Corpse newCorpse = Instantiate(corpsePrefab,transform.position,Quaternion.Euler(90f,0f,0f));
+    //    newCorpse.transform.SetParent(corpseContainer);
 
         if (gameObject.CompareTag("RedSoldier"))
         {
             SoundManager.PlaySound(SoundManager.Sound.Death_soldier1,transform.position);
             WarriorFactory.instance.redWarriorDied(this.gameObject);
+
+            CorpseFactory.instance.GetCorpse(transform.position, CorpseSprites.redWarrior);
         }
         else
         {
             SoundManager.PlaySound(SoundManager.Sound.Death_soldier2,transform.position);
             WarriorFactory.instance.blueWarriorDied(this.gameObject);
+
+            CorpseFactory.instance.GetCorpse(transform.position, CorpseSprites.blueWarrior);
         }
 
         transform.parent.GetComponentInChildren<RangeSensor>().ClearEntities();

@@ -11,7 +11,7 @@ public enum CorpseSprites
 
 public class Corpse : MonoBehaviour
 {
-    public static int corpseCounter;
+    public static int corpseCounter { get => CorpseFactory.instance.corpseCounter; }
 
     [SerializeField]
     private float _maxHP;
@@ -32,19 +32,26 @@ public class Corpse : MonoBehaviour
 
     private Sprite[] _usedSprites;
 
+    private CorpseSprites _usedSpritesEnum;
+
     private void Start()
     {
-        corpseCounter++;
         _joint = GetComponent<Joint>();
         _renderer = GetComponentInChildren<SpriteRenderer>();
         _hp = _maxHP;
 
-        SetUsedSprites(CorpseSprites.blueWarrior);
+        _usedSpritesEnum = CorpseSprites.blueWarrior;
+        _usedSprites = new Sprite[] { _blueWarriorSprites[0] };
     }
 
     public void SetUsedSprites(CorpseSprites sprite)
     {
-        switch (sprite)
+        _joint = GetComponent<Joint>();
+        _renderer = GetComponentInChildren<SpriteRenderer>();
+
+        _usedSpritesEnum = sprite;
+
+        switch (_usedSpritesEnum)
         {
             case CorpseSprites.necrovore:
                 _usedSprites = _necrovoreSprites;
@@ -57,6 +64,8 @@ public class Corpse : MonoBehaviour
                 break;
         }
         _renderer.sprite = _usedSprites[0];
+
+        _hp = _maxHP;
     }
 
     public float TakeDamage(float damage)
@@ -66,8 +75,8 @@ public class Corpse : MonoBehaviour
         if (_hp <= 0)
         {
             if (OnDeath != null) OnDeath();
-            corpseCounter--;
-            this.gameObject.SetActive(false);
+            _usedSprites = null;
+            CorpseFactory.instance.CorpseDied(gameObject);
         }
         else
         {
@@ -87,6 +96,19 @@ public class Corpse : MonoBehaviour
 
     public void StartJoint(Rigidbody body)
     {
+        switch (_usedSpritesEnum)
+        {
+            case CorpseSprites.necrovore:
+                _usedSprites = _necrovoreSprites;
+                break;
+            case CorpseSprites.redWarrior:
+                _usedSprites = _redWarriorSprites;
+                break;
+            default:
+                _usedSprites = _blueWarriorSprites;
+                break;
+        }
+
         this.transform.position = new Vector3(body.transform.position.x, 0, body.transform.position.z);
         _joint.connectedBody = body;
     }
