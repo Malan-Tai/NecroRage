@@ -1885,6 +1885,28 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: bd4e43f9e21bf69429a4de4f1e09ba9d, type: 3}
   - sound: 9
     audioClip: {fileID: 8300000, guid: a4e5a11cc18566545a31a348d330dfb9, type: 3}
+  - sound: 29
+    audioClip: {fileID: 8300000, guid: 5002d5360d45f324bab4cfddc137ebff, type: 3}
+  - sound: 30
+    audioClip: {fileID: 8300000, guid: 37fcbe34b15b28549a7d0ebb3380941d, type: 3}
+  - sound: 31
+    audioClip: {fileID: 8300000, guid: 11714e5420b135e41965dc986a05e3bb, type: 3}
+  - sound: 32
+    audioClip: {fileID: 8300000, guid: 0fb12f45d07e9aa4dad27aebd5279b74, type: 3}
+  - sound: 25
+    audioClip: {fileID: 8300000, guid: 98fbda65bb1574c48af142fe3f5cb2e9, type: 3}
+  - sound: 26
+    audioClip: {fileID: 8300000, guid: fad88a4c91a6f0f42bb44fddecfcc70f, type: 3}
+  - sound: 27
+    audioClip: {fileID: 8300000, guid: 1c5ef617ae3cf2445b853b12fbbde9b5, type: 3}
+  - sound: 28
+    audioClip: {fileID: 8300000, guid: 37db1712c4a8c624c93eda21f2d775e7, type: 3}
+  - sound: 35
+    audioClip: {fileID: 8300000, guid: 595186d7b0fd4064889410d3b3a9e8dd, type: 3}
+  - sound: 36
+    audioClip: {fileID: 8300000, guid: 37b61ce286b612e4bb571007654184f6, type: 3}
+  - sound: 37
+    audioClip: {fileID: 8300000, guid: 4cc21b48532f91a44885ad869a4f5bae, type: 3}
   mainMusic: {fileID: 0}
   musicVolumeModifier: 0.35
   ambiantVolumeModifier: 0.2
@@ -1895,6 +1917,7 @@ MonoBehaviour:
   musicSlide: {fileID: 236049617}
   ambiantSlide: {fileID: 431021916}
   sfxSlide: {fileID: 1306953535}
+  stepFrequency: 0.2
 --- !u!4 &647630483
 Transform:
   m_ObjectHideFlags: 0

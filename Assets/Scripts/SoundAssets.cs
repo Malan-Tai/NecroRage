@@ -36,16 +36,22 @@ public class SoundAssets : MonoBehaviour
     public Slider ambiantSlide;
     public Slider sfxSlide;
 
+    private float stepTimer;
+    public bool canPlayStep = true;
+    
+    [SerializeField] private float stepFrequency = 0.3f;
 
     public void Awake()
     {
         if (instance)
         {
             Debug.Log("Il y a déjà une instance de SoundManager : Autodestruction lancée ");
-            Destroy(this);
+            Destroy(this.gameObject);
+            return;
         }
-        DontDestroyOnLoad(this.gameObject);
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
+        
         musicSource = this.gameObject.AddComponent<AudioSource>();
         musicSource2 = this.gameObject.AddComponent<AudioSource>();
         ambiantSource = this.gameObject.AddComponent<AudioSource>();
@@ -69,6 +75,41 @@ public class SoundAssets : MonoBehaviour
 
     public void Update()
     {
+        stepTimer -= Time.deltaTime;
+        if (stepTimer <= 0) {
+            canPlayStep = true;
+        }
+    }
+
+    public void PlayFootstep(bool eating)
+    {
+        if (canPlayStep)
+        {
+            canPlayStep = false;
+            stepTimer = stepFrequency;
+            float vol = 0.5f;
+            if (eating)
+            {
+                stepTimer = stepFrequency *1.5f;
+            }
+            stepTimer = Random.Range(stepTimer/2, stepTimer);
+            int step = Random.Range(0,3);
+            
+            switch (step)
+            {
+                case 0 :
+                    SoundManager.PlaySound(SoundManager.Sound.FootSteps1,vol);
+                    break;
+                case 1 :
+                    SoundManager.PlaySound(SoundManager.Sound.FootSteps2,vol);
+                    break;
+                case 2 :
+                    SoundManager.PlaySound(SoundManager.Sound.FootSteps3,vol);
+                    break;
+                default :
+                    break;
+            }
+        }
         
     }
 
@@ -80,6 +121,35 @@ public class SoundAssets : MonoBehaviour
             case 0: SoundManager.PlaySound(SoundManager.Sound.Flesh1, position, volume); break;
             case 1: SoundManager.PlaySound(SoundManager.Sound.Flesh2, position, volume); break;
             case 2: SoundManager.PlaySound(SoundManager.Sound.Flesh3, position, volume); break;
+            default: break;
+        }
+    }
+
+    public void playNecrovoreDeathSound(Vector3 position, float volume = 1f)
+    {
+        int soundToPlay = Random.Range(0,5);
+        switch (soundToPlay)
+        {
+            case 0: SoundManager.PlaySound(SoundManager.Sound.Death_necrovore, position, volume); break;
+            case 1: SoundManager.PlaySound(SoundManager.Sound.Death_necrovore3, position, volume); break;
+            case 2: SoundManager.PlaySound(SoundManager.Sound.Death_necrovore4, position, volume); break;
+            case 3: SoundManager.PlaySound(SoundManager.Sound.Death_necrovore5, position, volume); break;
+            case 4: SoundManager.PlaySound(SoundManager.Sound.Death_necrovore6, position, volume); break;
+            default: break;
+        }
+    }
+
+    public void playWarriorDeathSound(Vector3 position, float volume = 1f)
+    {
+        int soundToPlay = Random.Range(0,6);
+        switch (soundToPlay)
+        {
+            case 0: SoundManager.PlaySound(SoundManager.Sound.Death_soldier1, position, volume); break;
+            case 1: SoundManager.PlaySound(SoundManager.Sound.Death_soldier2, position, volume); break;
+            case 2: SoundManager.PlaySound(SoundManager.Sound.Death_soldier3, position, volume); break;
+            case 3: SoundManager.PlaySound(SoundManager.Sound.Death_soldier4, position, volume); break;
+            case 4: SoundManager.PlaySound(SoundManager.Sound.Death_soldier5, position, volume); break;
+            case 5: SoundManager.PlaySound(SoundManager.Sound.Death_soldier6, position, volume); break;
             default: break;
         }
     }
@@ -96,7 +166,7 @@ public class SoundAssets : MonoBehaviour
         }
     }
 
-
+    
     public void PlayMusic(AudioClip musicClip)
     {
         AudioSource activesource = (firstSourcePlaying) ? musicSource : musicSource2;
@@ -208,6 +278,7 @@ public class SoundAssets : MonoBehaviour
     public void SetSFXVolume()
     {
         mainSFXVolume = sfxSlide.value * sfxVolumeModifier;
+        Debug.Log(mainSFXVolume);
     }
 
     public void ChangeLoop(bool value)
