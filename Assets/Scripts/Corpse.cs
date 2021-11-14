@@ -32,16 +32,16 @@ public class Corpse : MonoBehaviour
 
     private Sprite[] _usedSprites;
 
-    private CorpseSprites _usedSpritesEnum;
-
     private void Start()
     {
         _joint = GetComponent<Joint>();
         _renderer = GetComponentInChildren<SpriteRenderer>();
         _hp = _maxHP;
 
-        _usedSpritesEnum = CorpseSprites.blueWarrior;
-        _usedSprites = new Sprite[] { _blueWarriorSprites[0] };
+        if (_usedSprites == null)
+        {
+            _usedSprites = _blueWarriorSprites;
+        }
     }
 
     public void SetUsedSprites(CorpseSprites sprite)
@@ -49,18 +49,16 @@ public class Corpse : MonoBehaviour
         _joint = GetComponent<Joint>();
         _renderer = GetComponentInChildren<SpriteRenderer>();
 
-        _usedSpritesEnum = sprite;
-
-        switch (_usedSpritesEnum)
+        switch (sprite)
         {
             case CorpseSprites.necrovore:
                 _usedSprites = _necrovoreSprites;
                 break;
-            case CorpseSprites.redWarrior:
-                _usedSprites = _redWarriorSprites;
+            case CorpseSprites.blueWarrior:
+                _usedSprites = _blueWarriorSprites;
                 break;
             default:
-                _usedSprites = _blueWarriorSprites;
+                _usedSprites = _redWarriorSprites;
                 break;
         }
         _renderer.sprite = _usedSprites[0];
@@ -96,19 +94,6 @@ public class Corpse : MonoBehaviour
 
     public void StartJoint(Rigidbody body)
     {
-        switch (_usedSpritesEnum)
-        {
-            case CorpseSprites.necrovore:
-                _usedSprites = _necrovoreSprites;
-                break;
-            case CorpseSprites.redWarrior:
-                _usedSprites = _redWarriorSprites;
-                break;
-            default:
-                _usedSprites = _blueWarriorSprites;
-                break;
-        }
-
         this.transform.position = new Vector3(body.transform.position.x, 0, body.transform.position.z);
         _joint.connectedBody = body;
     }
