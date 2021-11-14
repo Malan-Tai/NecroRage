@@ -9,7 +9,6 @@ public class BoulderCrusher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("crush");
         if (OnCrush != null) OnCrush(other);
     }
 }

@@ -9,7 +9,7 @@ public class NecrovoreDeath : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, GameManager.Instance._player.transform.position) >= distanceToDie)
         {
-            Die();
+            NecrovoreFactory.instance.necrovoreDied(gameObject);
         }
     }
     public void Die()
@@ -18,6 +18,8 @@ public class NecrovoreDeath : MonoBehaviour
         NecrovoreFactory.instance.necrovoreDied(this.gameObject);
 
         transform.parent.GetComponentInChildren<NecrovoreRangeSensor>().ClearEntities();
+
+        CorpseFactory.instance.GetCorpse(transform.position, CorpseSprites.necrovore);
     }
 
     void OnTriggerEnter(Collider col)
