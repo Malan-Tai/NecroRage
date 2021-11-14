@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     private float _currentPulse = 0f;
 
     public bool pulsing = false;
+    private Coroutine _pulsingSliderCoroutine = null;
 
     private void Start()
     {
@@ -86,6 +87,8 @@ public class GameManager : MonoBehaviour
 
         if (pulsing)
         {
+            if (_pulsingSliderCoroutine == null) _pulsingSliderCoroutine = StartCoroutine(SliderShakeCoroutine(60f, 5f));
+
             _currentPulse += Time.deltaTime;
             if (_currentPulse >= _redVisionPulseTime * 0.6f)
             {
@@ -103,6 +106,11 @@ public class GameManager : MonoBehaviour
             {
                 _currentPulse = 0f;
             }
+        }
+        else if (_pulsingSliderCoroutine != null)
+        {
+            StopCoroutine(_pulsingSliderCoroutine);
+            _pulsingSliderCoroutine = null;
         }
     }
 
@@ -159,7 +167,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        _hungerSlider.gameObject.SetActive(false);
+        _hungerSlider.transform.parent.gameObject.SetActive(false);
         GetComponent<Defeat>().GameOver((int)(_timeScore + _eatenScore + _fullBellyScore));
     }
 
