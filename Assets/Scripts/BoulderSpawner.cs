@@ -9,6 +9,10 @@ public class BoulderSpawner : MonoBehaviour
     [SerializeField] private float _spawnradius = 15;
 
     [SerializeField] private int startSpawnThreshold = 1;
+    private int minSpawnThreshold;
+    [SerializeField] private int maxSpawnThreshold = 5;
+    [SerializeField] private float timeToMaxThreshold = 60f;
+    private float _currentThreshold;
 
     [SerializeField] private Transform _playerTransform;
 
@@ -24,6 +28,8 @@ public class BoulderSpawner : MonoBehaviour
         }
         instance = this;
 
+        minSpawnThreshold = startSpawnThreshold;
+        _currentThreshold = startSpawnThreshold;
         Boulder.OnLand += BoulderLand;
     }
 
@@ -34,6 +40,9 @@ public class BoulderSpawner : MonoBehaviour
 
     void Update()
     {
+        _currentThreshold += ((maxSpawnThreshold - minSpawnThreshold) / timeToMaxThreshold) * Time.deltaTime;
+        startSpawnThreshold = Mathf.FloorToInt(_currentThreshold);
+
         if (_airBoulderCount < startSpawnThreshold)
         {
             Vector3 unit = _playerTransform.position + Random.insideUnitSphere * _spawnradius;
