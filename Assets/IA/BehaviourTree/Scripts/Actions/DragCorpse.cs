@@ -36,7 +36,7 @@ public class DragCorpse : ActionNode
         if (cumulatedDamages >= 15f)
         {
             cumulatedDamages -= 15f;
-            SoundAssets.instance.playMunchSound(context.transform.position);
+            SoundAssets.instance.playMunchSound(context.transform.position,0.5f);
         }
 
         if (context.agent.velocity.sqrMagnitude > 0.1f) context.transform.rotation = Quaternion.LookRotation(-context.agent.velocity.normalized, Vector3.up);
