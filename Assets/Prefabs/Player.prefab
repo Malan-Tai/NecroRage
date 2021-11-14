@@ -176,11 +176,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHunger: 100
   _hungerDrainRate: 10
-  _eatingDamage: 15
+  _eatingDamage: 20
   _eatingSlowness: 0.5
-  _speed: 5
+  _speed: 15
   _dashSpeedBonus: 7
-  _dashDuration: 0.2
+  _dashDuration: 0.1
   _dashHungerDrain: 5
   _cameraShakeDashMagnitude: 0.2
   _cameraShakeDashDuration: 0.1

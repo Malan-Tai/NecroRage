@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5422287517047680806}
   - component: {fileID: 5422287517047680827}
   - component: {fileID: 5422287517047680825}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: NecovoreRangeSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 031077bd59d2fea4d8a3d9541b727389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToDie: 50
 --- !u!1 &5422287518218074933
 GameObject:
   m_ObjectHideFlags: 0

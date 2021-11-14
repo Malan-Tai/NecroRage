@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 2455964629201427607}
   - component: {fileID: 2455964629201427606}
   - component: {fileID: 2455964629201427604}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: RangeSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

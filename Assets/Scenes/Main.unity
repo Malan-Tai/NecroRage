@@ -1525,34 +1525,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4602323599991004457, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602323599991004457, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602323599991004457, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602323599991004460, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
-      propertyPath: _speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602323599991004460, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
-      propertyPath: _dashDuration
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602323599991004460, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
-      propertyPath: _eatingDamage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4602323599991004460, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
-      propertyPath: _hungerLostOnHit
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 4602323599991004461, guid: 12e1a0952c21150419026c8ea95d8887, type: 3}
       propertyPath: m_RootOrder
       value: 10

@@ -39,7 +39,7 @@ public class DragCorpse : ActionNode
             SoundAssets.instance.playMunchSound(context.transform.position);
         }
 
-        context.transform.rotation = Quaternion.LookRotation(-context.agent.velocity.normalized, Vector3.up);
+        if (context.agent.velocity.sqrMagnitude > 0.1f) context.transform.rotation = Quaternion.LookRotation(-context.agent.velocity.normalized, Vector3.up);
 
         if (blackboard.eatenCorpse.gameObject.activeInHierarchy == false)
         {

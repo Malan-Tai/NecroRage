@@ -34,7 +34,6 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Component comp;
         if (other.CompareTag("BlueSoldier") || other.CompareTag("RedSoldier"))
         {
             WarriorDeath warrior = other.GetComponentInChildren<WarriorDeath>();
@@ -43,16 +42,26 @@ public class Arrow : MonoBehaviour
         }
         else if (other.CompareTag("Necrophage"))
         {
-            NecrovoreDeath necrovore = GetComponentInChildren<NecrovoreDeath>();
-            necrovore.Die();
+            NecrovoreDeath necrovore = other.GetComponentInChildren<NecrovoreDeath>();
+            if (necrovore == null) necrovore = other.GetComponent<NecrovoreDeath>();
+            if (necrovore != null)
+            {
+                necrovore.Die();
+            }
+            else
+            {
+                NecrovorePlayer player = other.GetComponent<NecrovorePlayer>();
+                print("player");
+                player.GetHit();
+            }
             Die();
         }
-        else if (other.TryGetComponent(typeof(NecrovorePlayer), out comp))
-        {
-            NecrovorePlayer necrovore = comp as NecrovorePlayer;
-            necrovore.GetHit();
-            Die();
-        }
+        //else if (other.TryGetComponent(typeof(NecrovorePlayer), out comp))
+        //{
+        //    NecrovorePlayer necrovore = comp as NecrovorePlayer;
+        //    necrovore.GetHit();
+        //    Die();
+        //}
         else if (other.CompareTag("Corpse") || other.CompareTag("Obstacle"))
         {
             Die();
