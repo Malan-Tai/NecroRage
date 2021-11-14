@@ -72,14 +72,14 @@ public class SoundAssets : MonoBehaviour
         
     }
 
-    public void playMunchSound(Vector3 position)
+    public void playMunchSound(Vector3 position, float volume = 1f)
     {
         int soundToPlay = Random.Range(0,3);
         switch (soundToPlay)
         {
-            case 0: SoundManager.PlaySound(SoundManager.Sound.Flesh1, position); break;
-            case 1: SoundManager.PlaySound(SoundManager.Sound.Flesh2, position); break;
-            case 2: SoundManager.PlaySound(SoundManager.Sound.Flesh3, position); break;
+            case 0: SoundManager.PlaySound(SoundManager.Sound.Flesh1, position, volume); break;
+            case 1: SoundManager.PlaySound(SoundManager.Sound.Flesh2, position, volume); break;
+            case 2: SoundManager.PlaySound(SoundManager.Sound.Flesh3, position, volume); break;
             default: break;
         }
     }
